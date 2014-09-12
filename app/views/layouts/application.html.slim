@@ -19,8 +19,12 @@ html
     nav.navbar.navbar-static-left
       .container
         .navbar-header
-          a.navbar-brand href=root_path
-            = CONFIG['title']
+          a href=user_root_path(username: current_user.username)
+            img.img-circle.img-avatar src=current_user.avatar.normal.url
+            '
+          a href=user_root_path(username: current_user.username)
+            = current_user.name
+            '
         ul.nav.navbar-nav.navbar-right
           - if login?
             li class=('active' if request.original_fullpath =~ /^\/notifications/)
@@ -28,13 +32,6 @@ html
                 i.fa.fa-bell-o
                 - if unread_notifications_count > 0
                   .badge = unread_notifications_count > 99 ? '99+' : unread_notifications_count
-              img.img-circle.img-avatar src=current_user.avatar.normal.url
-              '
-              = current_user.name
-              '
-              li
-                a href=user_root_path(username: current_user.username)
-                  = t '.profile'
               li.divider
               li
                   = t '.likes'
