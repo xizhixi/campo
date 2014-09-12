@@ -25,15 +25,17 @@ html
           a href=user_root_path(username: current_user.username)
             = current_user.name
             '
+          a.notifications-bell href=notifications_path
+            i.fa.fa-bell-o
+              - if unread_notifications_count > 0
+                .badge = unread_notifications_count > 99 ? '99+' : unread_notifications_count
+            li.divider
+
         ul.nav.navbar-nav.navbar-right
           - if login?
             li class=('active' if request.original_fullpath =~ /^\/notifications/)
-              a.notifications-bell href=notifications_path
-                i.fa.fa-bell-o
-                - if unread_notifications_count > 0
-                  .badge = unread_notifications_count > 99 ? '99+' : unread_notifications_count
-              li.divider
               li
+                a href=likes_user_path(username: current_user.username)
                   = t '.likes'
               li
                 a href=likes_user_topics_path(username: current_user.username)
