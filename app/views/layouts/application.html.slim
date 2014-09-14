@@ -30,7 +30,10 @@ html
               - if unread_notifications_count > 0
                 .badge = unread_notifications_count > 99 ? '99+' : unread_notifications_count
             li.divider
-
+         .panel
+            .panel-body
+              a.btn.btn-success.btn-block href=new_topic_path(category_id: @category.try(:slug))
+                = t '.create_topic'
         ul.nav.navbar-nav.navbar-right
           - if login?
             li class=('active' if request.original_fullpath =~ /^\/notifications/)
