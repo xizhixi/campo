@@ -30,9 +30,8 @@ html
               - if unread_notifications_count > 0
                 .badge = unread_notifications_count > 99 ? '99+' : unread_notifications_count
             li.divider
-              a.btn.btn-success.btn-block href=new_topic_path(category_id: @category.try(:slug))
-                = t '.create_topic'
-          li class=('active' if request.original_fullpath =~ /^\/notifications/)
+            a.btn.btn-success.btn-block href=new_topic_path(category_id: @category.try(:slug))
+              = t '.create_topic'
             li
               a href=likes_user_topics_path(username: current_user.username)
                 = t '.likes'
