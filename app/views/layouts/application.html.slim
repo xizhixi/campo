@@ -18,57 +18,56 @@ html
   body
     nav.navbar.navbar-static-left
       .container
-        .navbar-header
-          a href=user_root_path(username: current_user.username)
-            img.img-circle.img-avatar src=current_user.avatar.normal.url
-            '
-          a href=user_root_path(username: current_user.username)
-            = current_user.name
-            '
-          a.notifications-bell href=notifications_path
-            i.fa.fa-bell-o
-              - if unread_notifications_count > 0
-                .badge = unread_notifications_count > 99 ? '99+' : unread_notifications_count
+        - if login?
+          .navbar-header
+            a href=user_root_path(username: current_user.username)
+              img.img-circle.img-avatar src=current_user.avatar.normal.url
+              '
+            a href=user_root_path(username: current_user.username)
+              = current_user.name
+              '
+            a.notifications-bell href=notifications_path
+              i.fa.fa-bell-o
+                - if unread_notifications_count > 0
+                  .badge = unread_notifications_count > 99 ? '99+' : unread_notifications_count
             li.divider
          .panel
             .panel-body
               a.btn.btn-success.btn-block href=new_topic_path(category_id: @category.try(:slug))
                 = t '.create_topic'
-        ul.nav.navbar-nav.navbar-right
-          - if login?
-            li class=('active' if request.original_fullpath =~ /^\/notifications/)
-              li
-                a href=likes_user_topics_path(username: current_user.username)
-                  = t '.likes'
-              li
-                a href=likes_user_topics_path(username: current_user.username)
-                  = t '.topics'
-              li
-                a href=likes_user_comments_path(username: current_user.username)
-                  = t '.comments'
-              li.divider
-              li
-                a href=settings_account_path
-                  = t '.settings'
-              li.divider
-              li
-                a href=logout_path data-method="delete"
-                  = t '.logout'
-          - else
+          li class=('active' if request.original_fullpath =~ /^\/notifications/)
             li
-              a href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath))
-                = t '.sign_up'
+              a href=likes_user_topics_path(username: current_user.username)
+                = t '.likes'
             li
-              a href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
-                = t '.sign_in'
-          li.navbar-toggle
-            a.item type="button" data-toggle="collapse" data-target="#navbar"
-              i.fa.fa-bars
-        #navbar.collapse.navbar-collapse
-          ul.nav.navbar-nav
-            li class=('active' if request.original_fullpath =~ /^\/topics/)
-              a href=topics_path
-                = t '.community'
+              a href=likes_user_topics_path(username: current_user.username)
+                = t '.topics'
+            li
+              a href=likes_user_comments_path(username: current_user.username)
+                = t '.comments'
+            li.divider
+            li
+              a href=settings_account_path
+                = t '.settings'
+            li.divider
+            li
+              a href=logout_path data-method="delete"
+                = t '.logout'
+        - else
+          li
+            a href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+              = t '.sign_up'
+          li
+            a href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+              = t '.sign_in'
+        li.navbar-toggle
+          a.item type="button" data-toggle="collapse" data-target="#navbar"
+            i.fa.fa-bars
+      #navbar.collapse.navbar-collapse
+        ul.nav.navbar-nav
+          li class=('active' if request.original_fullpath =~ /^\/topics/)
+            a href=topics_path
+              = t '.community'
 
     - if login? and !current_user.confirmed?
       = render 'share/user_confirm_required'
