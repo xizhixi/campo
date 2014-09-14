@@ -38,7 +38,7 @@ html
           - if login?
             li class=('active' if request.original_fullpath =~ /^\/notifications/)
               li
-                a href=likes_user_path(username: current_user.username)
+                a href=likes_user_topics_path(username: current_user.username)
                   = t '.likes'
               li
                 a href=likes_user_topics_path(username: current_user.username)
