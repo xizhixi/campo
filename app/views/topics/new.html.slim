@@ -1,12 +1,19 @@
 - @page_title = t '.new_topic'
 
-.main
+.main.nopadding
   .container
     .row
       .col-md-9
         .panel
-          .panel-heading
+          /.panel-heading
             h3.panel-title = t '.new_topic'
 
           .panel-body
             = render 'form', topic: @topic
+
+javascript:
+  var snapper = new Snap({
+    element: document.getElementById('content'),
+    disable: 'right',
+    tapToClose: true
+  });

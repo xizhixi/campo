@@ -63,4 +63,8 @@ module MarkdownHelper
   def markdown_area(form, name, options = {})
     render partial: 'markdown/area', locals: options.merge(form: form, name: name)
   end
+
+  def markdown_brief(form, name, options = {})
+    render partial: 'markdown/brief', locals: options.merge(form: form, name: name)
+  end
 end

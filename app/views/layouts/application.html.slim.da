@@ -7,9 +7,7 @@ html
     = javascript_include_tag "application", "data-turbolinks-track" => true
     - if I18n.locale != 'en'
       = javascript_include_tag "locales/#{I18n.locale}"
-    meta name="apple-mobile-web-app-capable" content="yes"
-    meta name="viewport" content="width=device-width, minimal-ui, initial-scale=1.0"
-    meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
     = csrf_meta_tags
     - if login?
       javascript:
@@ -17,11 +15,11 @@ html
           id: #{current_user.id}
         };
 
+
   body
-    .snap-drawers
-      .snap-drawer-left
-        .navbar height="100%"
-          - if login?
+    #left-panel data-display="push" data-role="panel" data-theme="c"
+      .navbar height="100%"
+        - if login?
             .panel
               a.btn href=user_root_path(username: current_user.username)
                 img.img-circle.img-avatar src=current_user.avatar.normal.url
@@ -35,46 +33,40 @@ html
             .panel
               a.btn.btn-block href=root_path
                 = t '.LoveAnd'
-            /.panel
-              - if login? and !current_user.confirmed?
-                = render 'share/user_confirm_required'
             .panel
-              a.btn.btn-primary href=url_for(tab: 'hot')
-                = t '.hot'
-              a.btn.btn-primary href=url_for(tab: 'newest')
-                = t '.newest'
-              /a.btn.btn-block
+              a.btn.btn-block
                 = t '.points'
+            .panel
+              a.btn.btn-block
                 = t '.exp'
             .panel
               a.btn.btn-block href=user_topics_path(username: current_user.username)
                 = t 'posted'
-                .badge = posted_count(current_user)> 99 ? '99+' : posted_count(current_user)
+                .badge = posted_count> 99 ? '99+' : posted_count
             .panel
               a.btn.btn-block href=likes_user_topics_path(username: current_user.username)
                 = t 'accepted'
-                .badge = accepted_count(current_user)> 99 ? '99+' : accepted_count(current_user)
+                .badge = accepted_count> 99 ? '99+' : accepted_count
             .panel
               a.btn.btn-block href=done_user_topics_path(username: current_user.username)
                 = t 'done'
-                .badge = done_count(current_user)> 99 ? '99+' : done_count(current_user)
+                .badge = done_count> 99 ? '99+' : done_count
             .panel
               a.btn.btn-block
                 = t '.about'
-            /.panel
+            .panel
               a.btn.btn-block
                 = t '.feedback'
             .panel
               a.btn.btn-success.btn-block href=new_topic_path(category_id: @category.try(:slug))
                 = t '.create_topic'
-          - else
-            li
-              a href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath))
-                = t '.sign_up'
-            li
-              a href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
-                = t '.sign_in'
-      .snap-drawer-right
-        iframe#Box frameborder="1" style="position: absolute; height: 100%" scrolling="0"
-    #content.snap-content
-      = yield
+        - else
+          li
+            a href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+              = t '.sign_up'
+          li
+            a href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+              = t '.sign_in'
+    #right-panel data-display="push" data-position="right" data-role="panel" data-theme="c"
+      iframe#Box frameborder="0" style="position: absolute; height: 100%" scrolling="0"
+    = yield

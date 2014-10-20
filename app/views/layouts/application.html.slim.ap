@@ -1,0 +1,60 @@
+doctype html
+html
+  head
+    title
+      = @page_title ? "#{@page_title} - #{CONFIG['title']}" : CONFIG['title']
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    - if I18n.locale != 'en'
+      = javascript_include_tag "locales/#{I18n.locale}"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    = csrf_meta_tags
+    - if login?
+      javascript:
+        campo.currentUser = {
+          id: #{current_user.id}
+        };
+
+  body
+    nav.navbar.navbar-static-left
+      .container
+        .navbar-header
+          a.navbar-brand href=root_path
+            = CONFIG['title']
+        ul.nav.navbar-nav.navbar-left
+          - if login?
+              li
+                a href=user_root_path(username: current_user.username)
+                  img.img-circle.img-avatar src=current_user.avatar.normal.url
+                    '
+                    = current_user.name
+                    '
+                a.notifications-bell href=notifications_path
+                  i.fa.fa-bell-o
+                    - if unread_notifications_count > 0
+                      .badge = unread_notifications_count > 99 ? '99+' : unread_notifications_count
+                a href=user_topics_path(username: current_user.username)
+                  = t 'posted'
+                  .badge = posted_count> 99 ? '99+' : posted_count
+                a href=likes_user_topics_path(username: current_user.username)
+                  = t 'accepted'
+                  .badge = accepted_count> 99 ? '99+' : accepted_count
+                a href=done_user_topics_path(username: current_user.username)
+                  = t 'done'
+                  .badge = done_count> 99 ? '99+' : done_count
+                .panel
+                  .panel-body
+                    a.btn.btn-success.btn-block href=new_topic_path(category_id: @category.try(:slug))
+                      = t '.create_topic'
+                a href=logout_path data-method="delete"
+                  = t '.logout'
+          - else
+            li
+              a href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+                = t '.sign_up'
+            li
+              a href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+                = t '.sign_in'
+    - if login? and !current_user.confirmed?
+      = render 'share/user_confirm_required'
+    = yield

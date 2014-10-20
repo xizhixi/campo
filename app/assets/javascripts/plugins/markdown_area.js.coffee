@@ -4,8 +4,8 @@ $(document).on 'focus', '.markdown-area textarea', ->
 $(document).on 'blur', '.markdown-area textarea', ->
   $(this).closest('.markdown-area').removeClass('focus')
 
-$(document).on 'click', '.markdown-area a[data-behaviors~="preview"]', (e) ->
-  area = $(this).closest('.markdown-area')
+$(document).on 'click', '.bxslider a[data-behaviors~="preview"]', (e) ->
+  area = $(this).closest('.bxslider')
   preview = area.find('.preview')
   textarea = area.find('textarea')
   preview.html('')

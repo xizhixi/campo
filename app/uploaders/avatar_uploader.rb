@@ -9,7 +9,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   VERSION_SIZES = {
     normal: 48,
-    bigger: 96
+    bigger: 96,
+    original: 1080
   }
 
   def default_url
@@ -20,7 +21,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   VERSION_SIZES.each do |version_name, size|
     version version_name do
-      process resize_to_fill: [size, size]
+      if version_name.to_s == "original"
+        process resize_to_fill: [size, size*16/10]
+      else
+        process resize_to_fill: [size, size]
+      end
     end
   end
 

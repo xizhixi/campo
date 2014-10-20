@@ -2,15 +2,14 @@
   .container
     .row
       .col-md-8.col-md-push-2
+        /a.btn.btn-default href=clear_notifications_path data-remote="true" data-method="delete" data-confirm=t('.delete_all_confirm')
+          = t '.delete_all'
+        /a.btn.btn-default.pull-right href=settings_notifications_path
+          i.fa.fa-cog
+          /'
         .panel
           .panel-heading
-            .pull-right
-              a.btn.btn-default href=settings_notifications_path
-                i.fa.fa-cog
-              '
-              a.btn.btn-default href=clear_notifications_path data-remote="true" data-method="delete" data-confirm=t('.delete_all_confirm')
-                = t '.delete_all'
-            h3.panel-title
+            /h3.panel-title
               = t '.notifications'
           .panel-body
             ul.list-group.list-group-campo
@@ -21,5 +20,15 @@
                 li.list-group-item.text-center.text-muted.empty-message
                   = t '.no_notifications'
           .panel-footer.clearfix
+            a.btn.btn-default href=clear_notifications_path data-remote="true" data-method="delete" data-confirm=t('.delete_all_confirm')
+              = t '.delete_all'
             .pull-right
               = paginate @notifications, theme: 'campo'
+
+
+javascript:
+  var snapper = new Snap({
+    element: document.getElementById('content'),
+    disable: 'right',
+    hyperextensible: false
+  });

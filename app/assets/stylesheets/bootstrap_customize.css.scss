@@ -1,11 +1,14 @@
 body {
   background: #eee;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .navbar {
   background: white;
   border-bottom: none;
-  margin-bottom: 0;
+  padding: 0 !important;
+  margin: 0 !important;
 
   &.navbar-inverse {
     background: #222;
@@ -35,8 +38,8 @@ body {
 
   .navbar-brand {
     color: $gray-dark;
-    line-height: 50px;
-    padding: 0 15px;
+    line-height: 0px;
+    padding: 0 0px;
 
     &:hover {
       text-decoration: none;
@@ -46,8 +49,8 @@ body {
   .navbar-nav > li {
     > a {
       color: $gray-light;
-      padding: 0 15px;
-      line-height: 50px;
+      padding: 0 0px;
+      line-height: 0px;
 
       &:hover {
         color: $gray-dark;
@@ -70,7 +73,7 @@ body {
 
   .navbar-right {
     float: right;
-    margin-right: -15px;
+    margin-right: 0px;
 
     > li {
       float: left;
@@ -82,19 +85,19 @@ body {
     }
 
     .item-user {
-      line-height: 40px;
+      line-height: 0px;
       @include clearfix();
 
       img {
         height: 32px;
-        width: 32px;
-        margin-top: 4px;
+        width: 18px;
+        margin-top: 0px;
         float: left;
       }
     }
 
     .item-user-content {
-      margin-left: 40px;
+      margin-left: 0px;
     }
   }
 
@@ -119,12 +122,12 @@ body {
       }
 
       > li > a {
-        padding: 0 15px;
+        padding: 0 0px;
       }
     }
 
     .navbar-right {
-      margin-right: -15px;
+      margin-right: 0px;
     }
 
     .navbar-collapse {
@@ -155,16 +158,16 @@ body {
         &:hover {
           background: transparent;
           color: $gray-dark;
-          padding-bottom: 8px;
-          border-bottom: 2px solid $link-color;
+          padding-bottom: 0px;
+          border-bottom: 0px solid $link-color;
         }
       }
 
       &.active {
         a {
           color: $gray-dark;
-          padding-bottom: 8px;
-          border-bottom: 2px solid $link-color;
+          padding-bottom: 0px;
+          border-bottom: 0px solid $link-color;
         }
       }
     }
@@ -173,12 +176,12 @@ body {
 
 .section {
   .section-heading {
-    margin-bottom: 21px;
+    margin-bottom: 0px;
   }
 
   .section-title {
     margin: 0;
-    line-height: 35px;
+    line-height: 0px;
   }
 }
 
@@ -190,7 +193,7 @@ body {
   border: none;
 
   .panel-heading {
-    padding: 10px 15px;
+    padding: 0px 0px;
     border-bottom: 1px solid #eee;
 
     .nav li a {
@@ -209,17 +212,19 @@ body {
   }
 
   .panel-title {
-    line-height: 35px;
+    line-height: 0px;
     font-size: 1.2em;
   }
 
   .panel-body {
+    padding: 10px;
+
     .list-group {
-      margin: -15px;
+      margin: 0px;
     }
 
     .list-group-item {
-      padding: 15px;
+      /*padding: 0px;*/
     }
   }
 
@@ -228,18 +233,18 @@ body {
   }
 
   .panel-footer {
-    padding: 10px 15px;
+    padding: 0px 0px;
     border-top: 1px solid #eee;
     background: transparent;
   }
 }
 
 .list-group {
-  padding: 0;
+  padding: 0px;
 
   .list-group-item {
     border: none;
-    border-bottom: 1px solid #eee;
+    border-bottom: 0;
     margin-bottom: 0;
 
     &:last-child {
@@ -260,8 +265,8 @@ body {
   }
 
   .list-group-item-link {
-    margin: -15px -16px;
-    padding: 15px 16px;
+    margin: 0px 0px;
+    padding: 0px 0px;
     display: block;
     color: #333;
     @include clearfix();
@@ -277,7 +282,7 @@ body {
   }
 
   .list-group-item-icon + .list-group-item-content {
-    margin-left: 24px;
+    margin-left: 0px;
   }
 
   .list-group-item-avatar {
@@ -285,14 +290,14 @@ body {
   }
 
   .list-group-item-avatar + .list-group-item-content {
-    margin-left: 60px;
+    margin-left: 0px;
   }
 
   .list-group-item-actions {
-    margin-top: $padding-base-vertical;
-    margin-right: -$padding-base-horizontal;
-    margin-bottom: -$padding-base-vertical;
-    margin-left: -$padding-base-horizontal;
+    /*margin-top: $padding-base-vertical;*/
+    margin-right: $padding-base-horizontal;
+    /*margin-bottom: -$padding-base-vertical;*/
+    /*margin-left: -$padding-base-horizontal;*/
 
     .btn {
       color: $gray-light;
@@ -347,8 +352,8 @@ body {
     }
 
     .btn {
-      padding: 3px 9px;
-      margin: 0 1px;
+      padding: 0px 0px;
+      margin: 0 0px;
 
       &.active,
       &:hover {
@@ -398,4 +403,8 @@ article {
 .middle-block-inner {
   display: table-cell;
   vertical-align: middle;
+}
+.row {
+  margin-left: -15px;
+  margin-right: 0px;
 }

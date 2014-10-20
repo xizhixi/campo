@@ -1,20 +1,39 @@
 = form_for @topic, remote: true, html: { class: 'topic-form' } do |f|
-  .row
-    .col-md-9
-      .form-group
+  javascript:
+    $(document).ready(function () {
+      $('.bxslider').bxSlider({
+        mode: 'horizontal',
+        infiniteLoop: false,
+        controls: true,
+        pager: true,
+        oneToOneTouch: true,
+        nextSelector: '#slider-next',
+        prevSelector: '#slider-prev'
+      });
+    });
+
+  .slider data-snap-ignore="true"
+    ul.bxslider
+      li
         = f.text_field :title, class: 'form-control', placeholder: t('.title'), tabIndex: 1
-    .col-md-3
-      .form-group
-        = f.collection_select :category_id, Category.order(topics_count: :desc), :id, :name, { include_blank: t('.no_category')}, class: 'form-control', tabIndex: 2
-  .form-group
-    = markdown_area f, :body, tabIndex: 3
-  - if topic.new_record?
-    = f.submit t('.create_topic'), class: 'btn btn-success', tabIndex: 4, 'data-disable-with' => t('.create_topic')
-  - else
-    = f.submit t('.save_changes'), class: 'btn btn-success', tabIndex: 4, 'data-disable-with' => t('.save_changes')
-    '
-    a.btn.btn-default href=topic_path(@topic) tabIndex="5"
-      = t '.cancel'
+      li
+        = markdown_area f, :body, tabIndex: 3
+        a.btn.pull-right href="##" data-behaviors="preview"
+          = t 'preview'
+      li
+        a.btn.pull-right href="##" data-behaviors="preview"
+          = t 'preview'
+          article.preview
+
+    #slider-next.btn.btn-default
+    - if topic.new_record?
+      = f.submit t('.create_topic'), class: 'btn btn-success pull-right', tabIndex: 4, 'data-disable-with' => t('.create_topic')
+    - else
+      = f.submit t('.save_changes'), class: 'btn btn-success pull-right', tabIndex: 4, 'data-disable-with' => t('.save_changes')
+      '
+      a.btn.btn-default href=topic_path(@topic) tabIndex="5"
+        = t '.cancel'
+
 
 - form_id = @topic.new_record? ? 'new_topic' : "edit_topic_#{@topic.id}"
 

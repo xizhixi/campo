@@ -2,6 +2,10 @@ class TopicsController < ApplicationController
   before_action :login_required, :no_locked_required, except: [:index, :show, :search]
   before_action :find_topic, only: [:edit, :update, :trash]
 
+  def home
+    @topics = Topic.all.order(id: :desc).page(params[:page])
+  end
+
   def index
     @topics = Topic.includes(:user, :category).page(params[:page])
 
@@ -41,12 +45,14 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find params[:id]
-
+=begin
     if params[:comment_id] and comment = @topic.comments.find_by(id: params.delete(:comment_id))
-      params[:page] = comment.page
+      #params[:page] = comment.page
     end
 
     @comments = @topic.comments.includes(:user).order(id: :asc).page(params[:page])
+=end
+    @comments = @topic.comments.includes(:user).order(id: :asc)
 
     respond_to do |format|
       format.html
@@ -71,7 +77,7 @@ class TopicsController < ApplicationController
 
   def trash
     @topic.trash
-    redirect_via_turbolinks_to topics_path
+    redirect_via_turbolinks_to root_path
   end
 
   private

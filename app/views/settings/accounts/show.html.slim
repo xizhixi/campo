@@ -35,6 +35,13 @@
                   = f.submit t('.save_changes'), class: 'btn btn-primary', tabIndex: 5
 
 javascript:
+  var snapper = new Snap({
+    element: document.getElementById('content'),
+    disable: 'right',
+    hyperextensible: false
+  });
+
+javascript:
   $('form.user-form').validate({
     rules: {
       'user[email]': {

@@ -6,8 +6,13 @@
 #= require jquery.validate
 #= require jquery.timeago
 #= require nprogress
-#= require campo
+#= require love
 #= require_tree ./plugins
+#= require jquery.bxslider.min
+#= require snap.min
+#= require demo
+
+
 
 $(document).on 'page:update', ->
   $('[data-behaviors~=autosize]').autosize()

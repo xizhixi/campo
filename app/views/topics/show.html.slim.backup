@@ -1,22 +1,24 @@
 - @page_title = @topic.title
 
-.main.nopadding
-  .container.nopadding width="auto"
+.main
+  .container
     .row
       .col-md-9
-        .panel.nopadding
+        .panel
+          .panel-heading
+            h1.panel-title = @topic.title
           .panel-body
             - cache [@topic, locale] do
               .list-group.list-group-campo
                 .list-group-item.comment data-creator-id=@topic.user_id
-                  a.list-group-item-avatar href=user_link(@topic.user) target="_parent"
+                  a.list-group-item-avatar href=user_link(@topic.user)
                     img.img-rounded alt="avatar" src=@topic.user.avatar.normal.url
                   .list-group-item-content
                     .list-group-item-heading
-                      a.comment-user href=user_link(@topic.user) target="_parent"
+                      a.comment-user href=user_link(@topic.user)
                         b = @topic.user.name
                         '
-                        /= "@#{@topic.user.username}"
+                        = "@#{@topic.user.username}"
                       = ' · '
                       a href=topic_path(@topic)
                         = time_ago_tag @topic.created_at
@@ -24,7 +26,6 @@
                         = ' · '
                         /a href=categoried_topics_path(category_id: @topic.category.slug)
                         = @topic.category.name
-                    h2 = @topic.title
                     article.comment-body data-visible-to="done"
                       = markdown_format @topic.body
                     .list-group-item-actions.clearfix
@@ -41,6 +42,9 @@
                           i.fa.fa-trash-o
 
         .panel#comments
+          .panel-heading
+            h3.panel-title
+              = t '.comments'
           .panel-body
             ul.list-group.list-group-campo id="comments-for-topic-#{@topic.id}"
               - if @comments.any?
@@ -55,16 +59,14 @@
               - unless current_user.locked?
                 .list-group.list-group-campo
                   .list-group-item.comment
-                    /a.list-group-item-avatar href=user_link(current_user) target="_parent"
-                    .list-group-item-avatar
+                    a.list-group-item-avatar href=user_link(current_user)
                       img.img-rounded alt="avatar" src=current_user.avatar.normal.url
                     .list-group-item-content
                       .list-group-item-heading
-                        /a.comment-user href=user_link(current_user) target="_parent"
-                        .comment-user
+                        a.comment-user href=user_link(current_user)
                           b = current_user.name
                           '
-                          /= "@#{current_user.username}"
+                          = "@#{current_user.username}"
                       = form_for @topic.comments.new, url: topic_comments_path(@topic), remote: true do |f|
                         .form-group
                           = markdown_brief f, :body
@@ -81,6 +83,28 @@
                 = t '.login'
               '
               = t '.to_comment'
+
+      .col-md-3
+        - if login?
+          .panel
+            .panel-body
+              = render 'subscriptions/subscription', subscribable: @topic
+
+        .panel
+          .panel-heading
+            h4.panel-title
+              = t '.related_topics'
+          .panel-body
+            - cache [@topic, 'related_topics', locale] do
+              .list-group.list-group-campo
+                - more_like_this_topics = @topic.more_like_this
+                - if more_like_this_topics.any?
+                  - more_like_this_topics.each do |topic|
+                    a.list-group-item href=topic_path(topic)
+                      = topic.title
+                - else
+                  .list-group-item.text-center.text-muted
+                    = t '.no_more_topics'
 
 - if login?
   - if @topic.liked_by?(current_user)

@@ -1,0 +1,12 @@
+- resource = form.object
+- resource_name = resource.class.name.downcase
+- write_pane_id = "write_#{resource_name}_#{resource.try(:id) || 'new'}"
+- preview_pane_id = "preview_#{resource_name}_#{resource.try(:id) || 'new'}"
+- tabIndex ||= nil
+
+.markdown-area
+  .tab-content
+    .tab-pane.active id=write_pane_id
+      = form.text_area name, class: 'form-control', data: { behaviors: 'autosize' }, tabIndex: tabIndex
+    .tab-pane id=preview_pane_id
+      article.preview

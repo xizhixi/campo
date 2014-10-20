@@ -8,7 +8,7 @@
         = render 'users/sidebar'
       .col-md-9
         #comments.panel
-          .panel-heading.clearfix
+          /.panel-heading.clearfix
             .pull-right
               ul.nav.nav-pills
                 li class=('active' if action_name == 'index')
@@ -30,3 +30,21 @@
             .panel-footer.clearfix
               .pull-right
                 = paginate @comments, theme: 'campo', params: { anchor: 'comments' }
+
+  javascript:
+    var snapper = new Snap({
+      element: document.getElementById('content'),
+      hyperextensible: false
+    });
+
+  javascript:
+    function LoadComments(url) {
+      $("#Box").attr("src", url);
+    }
+    ;
+
+  javascript:
+    function openright() {
+      snapper.open('right');
+    }
+    ;

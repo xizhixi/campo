@@ -1,9 +1,19 @@
-.list-group
-  a.list-group-item class=('active' if controller_name == 'topics') href=user_topics_path
-    .pull-right
+ul.nav.nav-pills
+  li class=('active' if controller_name == 'topics' and action_name == 'index')
+    a href=user_topics_path
+      = t 'posted'
+      .badge = posted_count(@user)> 99 ? '99+' : posted_count(@user)
+    /.pull-right
       i.fa.fa-chevron-right
-    = t '.topics'
-  a.list-group-item class=('active' if controller_name == 'comments') href=user_comments_path
-    .pull-right
+
+  li class=('active' if controller_name == 'topics' and action_name == 'likes')
+    a href=likes_user_topics_path
+      = t 'accepted'
+      .badge = accepted_count(@user)> 99 ? '99+' : accepted_count(@user)
+  li class=('active' if controller_name == 'topics' and action_name == 'done')
+    a href=done_user_topics_path
+      = t 'done'
+      .badge = done_count(@user)> 99 ? '99+' : done_count(@user)
+    /.pull-right
       i.fa.fa-chevron-right
-    = t '.comments'
+

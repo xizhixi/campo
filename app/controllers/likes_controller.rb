@@ -2,11 +2,33 @@ class LikesController < ApplicationController
   before_action :login_required, :no_locked_required, :find_likeable
 
   def create
+    if @likeable.user == current_user
+      render nothing: true
+      return
+    end
     @likeable.likes.find_or_create_by user: current_user
+    resource, id = request.path.split('/')[1, 2]
+    @commentable = resource.singularize.classify.constantize.find(id)
+    case @commentable
+    when Topic
+      @comment = @commentable.comments.create(body: 'accept!', user: current_user)
+    when Comment
+      @commentable.commentable.update(category_id: 1)
+    end
   end
 
   def destroy
-    @likeable.likes.where(user: current_user).destroy_all
+    resource, id = request.path.split('/')[1, 2]
+    @commentable = resource.singularize.classify.constantize.find(id)
+    case @commentable
+    when Topic
+      @likeable.likes.where(user: current_user).destroy_all
+      @commentable.comments.each do |c|
+        c.destroy if c.user == current_user and c.body == 'accept!'
+      end
+    when Comment
+      render :forbidden
+    end
   end
 
   private

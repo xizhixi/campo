@@ -31,6 +31,13 @@
                   = f.submit t('.save_changes'), class: 'btn btn-primary', tabIndex: 4
 
 javascript:
+  var snapper = new Snap({
+    element: document.getElementById('content'),
+    disable: 'right',
+    hyperextensible: false
+  });
+
+javascript:
   $('form.password-form').validate({
     rules: {
       'current_password': 'required',

@@ -1,0 +1,18 @@
+- cache [topic, locale] do
+  .swiper-slide.rel
+    img.img-responsive alt="avatar" src=topic.user.avatar.original.url
+    div style=("width:100%; height:12%; z-index:2; margin-top:-25%; background:#000; opacity:0.7; font-size:15px; font-weight:normal; color:white;")
+      = time_ago_tag topic.created_at
+      = "    "
+      = topic.user.name
+      .list-group-item-heading
+        = topic.title
+      a.btn.btn-default href=topic_path(topic)
+        = t '.create_topic'
+      input onclick="LoadComments('#{topic_path(topic)}')" type="button" value="LoadComments"
+      javascript:
+        function LoadComments(url) {
+          $("#right-panel").panel("open");
+          $("#Box").attr("src", url);
+        }
+        ;

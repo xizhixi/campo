@@ -1,5 +1,5 @@
 - cache [topic, locale] do
-  a.list-group-item.topic href=topic_last_path(topic)
+  .list-group-item.topic onclick="LoadComments('#{topic_path(topic)}');openright()"
     .list-group-item-avatar
       img.img-rounded alt="avatar" src=topic.user.avatar.normal.url
     .list-group-item-content
