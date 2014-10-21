@@ -24,19 +24,24 @@
                         = ' · '
                         /a href=categoried_topics_path(category_id: @topic.category.slug)
                         = @topic.category.name
-                    h2 = @topic.title
+                    h = @topic.title
                     article.comment-body data-visible-to="done"
                       = markdown_format @topic.body
                     .list-group-item-actions.clearfix
                       .pull-right
+                        I = t '.accept'
                         a.btn id="like-for-topic-#{@topic.id}" href=topic_like_path(@topic) data-remote="true" data-method="post"
                           i.fa.fa-heart
-                          '
-                          span.count
-                            - if @topic.likes_count > 0
-                              = @topic.likes_count
+                          /'
                         a.btn data-visible-to="creator" href=edit_topic_path(@topic) target="_parent"
                           i.fa.fa-pencil
+                        br
+                        span.count
+                          - if @topic.likes_count >= 0
+                            = @topic.likes_count
+                            '
+                            = t '.people'
+
                         /a.btn data-visible-to="creator" href=trash_topic_path(@topic) data-remote="true" data-method="delete" data-confirm=t('.delete_confirm')
                           i.fa.fa-trash-o
 

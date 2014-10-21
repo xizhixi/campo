@@ -29,6 +29,10 @@
 javascript:
   var snapper = new Snap({
     element: document.getElementById('content'),
-    disable: 'right',
     hyperextensible: false
   });
+
+javascript:
+  function openright() {
+    snapper.open('right');
+  };

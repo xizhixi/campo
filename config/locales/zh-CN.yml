@@ -108,6 +108,7 @@ zh-CN:
   comments:
     comment:
       delete_confirm: "你确定要删除此评论吗？"
+      selected: "任务完成"
     form:
       cancel: "取消"
       save_changes: "保存修改"
@@ -137,13 +138,19 @@ zh-CN:
       sign_in: "登录"
       sign_up: "注册"
       topics: "话题"
+      post: "我发起的任务"
+      taken: "我接受的任务"
+      done: "我完成的任务"
+      settings: "设置中心"
+      create_topic: "发布我的任务"
+      about: "关于"
   locales:
     en: "英文"
     zh-CN: "简体中文"
     zh-TW: "正体中文"
   markdown:
     area:
-      attach_images_by: "添加图片"
+      attach_images_by: "以你的美图作为给完成任务的小伙伴的奖励实在是再适合不过啦。点击上传一张吧，没完成任务的小伙伴是看不见的哦~"
       preview: "预览"
       select_them: "选择文件"
       write: "编辑"
@@ -246,10 +253,12 @@ zh-CN:
       edit_topic: "编辑话题"
     form:
       cancel: "取消"
-      create_topic: "创建话题"
+      create_topic: "发布我的任务"
       no_category: "不分类"
       save_changes: "保存修改"
-      title: "标题"
+      title: "任务描述"
+      description: "随性的任务可以描述得很简单，具体的任务则应该描述得很精确。稍微透露下你的美图的信息也可以哦。到最后一页确认美图之后，就可以成功发布了~"
+      preview: "美图预览"
     index:
       all_categories: "所有分类"
       create_topic: "创建话题"
@@ -275,6 +284,8 @@ zh-CN:
       sign_up: "注册"
       to_comment: "后发表评论"
       your_account_had_been_locked: "你的帐号已被锁定"
+      accept: "点击接受"
+      people: "个小伙伴已经接受了这个任务"
     topic:
       comments_count: "%{count} 条评论"
   user_mailer:
@@ -341,6 +352,9 @@ zh-CN:
     sidebar:
       comments: "评论"
       topics: "话题"
+      post: "发布"
+      taken: "接受"
+      done: "完成"
     topics:
       index:
         likes: "收藏"

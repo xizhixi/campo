@@ -22,8 +22,9 @@
             '
             span.count
               - if comment.likes_count > 0
-                = comment.likes_count
-          a.btn href=edit_comment_path(comment) data-remote="true" data-visible-to="creator" target="_parent"
+                /= comment.likes_count
+                = t '.selected'
+          /a.btn href=edit_comment_path(comment) data-remote="true" data-visible-to="creator" target="_parent"
             i.fa.fa-pencil
           /a.btn href=trash_comment_path(comment) data-remote="true" data-method="delete" data-visible-to="creator" data-confirm=t('.delete_confirm')
             i.fa.fa-trash-o

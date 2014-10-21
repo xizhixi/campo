@@ -14,17 +14,20 @@
 
   .slider data-snap-ignore="true"
     ul.bxslider
-      li
-        = f.text_area :title, class: 'form-control', placeholder: t('.title'), tabIndex: 1
-        img height="400"
+
       li
         = markdown_area f, :body, tabIndex: 3
         a.btn.pull-right href="##" data-behaviors="preview"
           #slider-next
           /= t 'preview'
       li
+        = f.text_area :title, class: 'form-control', data: { behaviors: 'autosize' }, placeholder: t('.title'), tabIndex: 1
+        .text.text-muted
+          = t '.description'
+        img height="400"
+      li
         /a.btn.pull-right href="##" data-behaviors="preview"
-        = t 'preview'
+        = t '.preview'
         article.preview
 
     /#slider-next.btn.btn-default

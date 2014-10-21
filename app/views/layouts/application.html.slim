@@ -16,6 +16,19 @@ html
         campo.currentUser = {
           id: #{current_user.id}
         };
+    javascript:
+      function launchFullscreen(element) {
+        if (element.requestFullscreen) {
+          element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+          element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) {
+          element.msRequestFullscreen();
+        }
+      }
+
 
   body
     .snap-drawers
@@ -24,44 +37,42 @@ html
           - if login?
             .panel
               a.btn href=user_root_path(username: current_user.username)
-                img.img-circle.img-avatar src=current_user.avatar.normal.url
-                  '
+                img.img-rounded src=current_user.avatar.normal.url
+                  /'
                   = current_user.name
                   '
               a.btn.notifications-bell.pull-right href=notifications_path
                 i.fa.fa-bell-o
                   - if unread_notifications_count > 0
                     .badge = unread_notifications_count > 99 ? '99+' : unread_notifications_count
-            .panel
-              a.btn.btn-block href=root_path
+              '
+              a.btn.btn-block href=root_path onclick="launchFullscreen(document.documentElement);"
                 = t '.LoveAnd'
-            /.panel
-              - if login? and !current_user.confirmed?
+              /- if login? and !current_user.confirmed?
                 = render 'share/user_confirm_required'
-            /.panel
-              a.btn.btn-primary href=url_for(tab: 'hot')
+              /a.btn.btn-primary href=url_for(tab: 'hot')
                 = t '.hot'
-              a.btn.btn-primary href=url_for(tab: 'newest')
+              /a.btn.btn-primary href=url_for(tab: 'newest')
                 = t '.newest'
               /a.btn.btn-block
                 = t '.points'
                 = t '.exp'
-            .panel
+              '
               a.btn.btn-block href=user_topics_path(username: current_user.username)
-                = t 'posted'
+                = t '.post'
                 .badge = posted_count(current_user)> 99 ? '99+' : posted_count(current_user)
-            .panel
+              '
               a.btn.btn-block href=likes_user_topics_path(username: current_user.username)
-                = t 'accepted'
+                = t '.taken'
                 .badge = accepted_count(current_user)> 99 ? '99+' : accepted_count(current_user)
-            .panel
+              '
               a.btn.btn-block href=done_user_topics_path(username: current_user.username)
-                = t 'done'
+                = t '.done'
                 .badge = done_count(current_user)> 99 ? '99+' : done_count(current_user)
-            .panel
+              '
               a.btn.btn-block
                 = t '.about'
-            .panel
+              '
               a.btn.btn-block href=settings_profile_path
                 = t '.settings'
             .panel
@@ -75,6 +86,6 @@ html
               a.btn.btn-block href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
                 = t '.sign_in'
       .snap-drawer-right
-        iframe#Box frameborder="1" style="position: absolute; height: 100%" scrolling="0"
+        iframe#Box frameborder="0" style="position: absolute; height: 103%" scrolling="0"
     #content.snap-content
       = yield

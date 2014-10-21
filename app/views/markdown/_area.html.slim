@@ -14,11 +14,9 @@
         = t '.preview'
   .file-upload
     = file_field_tag :file, multiple: true, tabIndex: 99
-    = form.text_area name, class: 'form-control', data: { behaviors: 'autosize' }, tabIndex: tabIndex
     .text.text-muted
       a = t '.attach_images_by'
-      = " "
-      a = " "
+    = form.text_area name, class: 'form-control', data: { behaviors: 'autosize' }, tabIndex: tabIndex
 
 /    .tab-pane id=preview_pane_id
 /  a href="##" data-behaviors="preview"
