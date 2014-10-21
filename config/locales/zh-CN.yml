@@ -220,6 +220,7 @@ zh-CN:
         password: "密码"
         password_settings: "密码设置"
         save_changes: "保存修改"
+        logout: "退出登录"
     profiles:
       flashes:
         successfully_updated: "成功更新个人资料"

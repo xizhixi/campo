@@ -224,6 +224,7 @@ en:
         password: Password
         password_settings: Password settings
         save_changes: Save changes
+        logout: Log Out
     profiles:
       flashes:
         successfully_updated: Successfully updated
