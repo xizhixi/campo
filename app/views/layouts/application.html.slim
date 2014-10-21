@@ -38,7 +38,7 @@ html
             /.panel
               - if login? and !current_user.confirmed?
                 = render 'share/user_confirm_required'
-            .panel
+            /.panel
               a.btn.btn-primary href=url_for(tab: 'hot')
                 = t '.hot'
               a.btn.btn-primary href=url_for(tab: 'newest')
@@ -61,18 +61,18 @@ html
             .panel
               a.btn.btn-block
                 = t '.about'
-            /.panel
-              a.btn.btn-block
-                = t '.feedback'
+            .panel
+              a.btn.btn-block href=settings_profile_path
+                = t '.settings'
             .panel
               a.btn.btn-success.btn-block href=new_topic_path(category_id: @category.try(:slug))
                 = t '.create_topic'
           - else
-            li
-              a href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+            .panel
+              a.btn.btn-block href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath))
                 = t '.sign_up'
-            li
-              a href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+            .panel
+              a.btn.btn-block href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
                 = t '.sign_in'
       .snap-drawer-right
         iframe#Box frameborder="1" style="position: absolute; height: 100%" scrolling="0"

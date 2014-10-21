@@ -1,18 +1,18 @@
 ul.nav.nav-pills
   li class=('active' if controller_name == 'topics' and action_name == 'index')
     a href=user_topics_path
-      = t 'posted'
+      = t '.post'
       .badge = posted_count(@user)> 99 ? '99+' : posted_count(@user)
     /.pull-right
       i.fa.fa-chevron-right
 
   li class=('active' if controller_name == 'topics' and action_name == 'likes')
     a href=likes_user_topics_path
-      = t 'accepted'
+      = t '.taken'
       .badge = accepted_count(@user)> 99 ? '99+' : accepted_count(@user)
   li class=('active' if controller_name == 'topics' and action_name == 'done')
     a href=done_user_topics_path
-      = t 'done'
+      = t '.done'
       .badge = done_count(@user)> 99 ? '99+' : done_count(@user)
     /.pull-right
       i.fa.fa-chevron-right

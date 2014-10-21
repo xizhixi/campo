@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_action :login_required, :no_locked_required, except: [:index, :show, :search]
+  before_action :login_required, :no_locked_required, except: [:home, :index, :show, :search]
   before_action :find_topic, only: [:edit, :update, :trash]
 
   def home

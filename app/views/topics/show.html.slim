@@ -37,7 +37,7 @@
                               = @topic.likes_count
                         a.btn data-visible-to="creator" href=edit_topic_path(@topic)
                           i.fa.fa-pencil
-                        a.btn data-visible-to="creator" href=trash_topic_path(@topic) data-remote="true" data-method="delete" data-confirm=t('.delete_confirm')
+                        /a.btn data-visible-to="creator" href=trash_topic_path(@topic) data-remote="true" data-method="delete" data-confirm=t('.delete_confirm')
                           i.fa.fa-trash-o
 
         .panel#comments
@@ -72,12 +72,12 @@
               - else
                 = t '.your_account_had_been_locked'
             - else
-              a href=signup_path(return_to: request.fullpath)
+              a href=signup_path(return_to: request.fullpath) target="_parent"
                 = t '.sign_up'
               '
               = t '.or'
               '
-              a href=login_path(return_to: request.fullpath)
+              a href=login_path(return_to: request.fullpath) target="_parent"
                 = t '.login'
               '
               = t '.to_comment'

@@ -7,7 +7,7 @@
         = render 'settings/sidebar'
       .col-md-9
         .panel
-          .panel-heading
+          /.panel-heading
             h3.panel-title
               = t '.password'
           .panel-body
@@ -29,6 +29,8 @@
               .form-group
                 .col-sm-6.col-sm-push-3
                   = f.submit t('.save_changes'), class: 'btn btn-primary', tabIndex: 4
+              a.btn.btn-warning href=logout_path data-method="delete"
+                = t '.logout'
 
 javascript:
   var snapper = new Snap({

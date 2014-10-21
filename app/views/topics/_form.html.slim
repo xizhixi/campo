@@ -2,7 +2,7 @@
   javascript:
     $(document).ready(function () {
       $('.bxslider').bxSlider({
-        mode: 'horizontal',
+        mode: 'fade',
         infiniteLoop: false,
         controls: true,
         pager: true,
@@ -15,25 +15,28 @@
   .slider data-snap-ignore="true"
     ul.bxslider
       li
-        = f.text_field :title, class: 'form-control', placeholder: t('.title'), tabIndex: 1
+        = f.text_area :title, class: 'form-control', placeholder: t('.title'), tabIndex: 1
+        img height="400"
       li
         = markdown_area f, :body, tabIndex: 3
         a.btn.pull-right href="##" data-behaviors="preview"
-          = t 'preview'
+          #slider-next
+          /= t 'preview'
       li
-        a.btn.pull-right href="##" data-behaviors="preview"
-          = t 'preview'
-          article.preview
+        /a.btn.pull-right href="##" data-behaviors="preview"
+        = t 'preview'
+        article.preview
 
-    #slider-next.btn.btn-default
+    /#slider-next.btn.btn-default
     - if topic.new_record?
       = f.submit t('.create_topic'), class: 'btn btn-success pull-right', tabIndex: 4, 'data-disable-with' => t('.create_topic')
     - else
       = f.submit t('.save_changes'), class: 'btn btn-success pull-right', tabIndex: 4, 'data-disable-with' => t('.save_changes')
-      '
-      a.btn.btn-default href=topic_path(@topic) tabIndex="5"
+      /'
+      /a.btn.btn-default href=topic_path(@topic) tabIndex="5"
         = t '.cancel'
-
+    a.btn.btn-default href=root_path tabIndex="5"
+      = t '.cancel'
 
 - form_id = @topic.new_record? ? 'new_topic' : "edit_topic_#{@topic.id}"
 
