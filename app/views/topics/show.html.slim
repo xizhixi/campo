@@ -39,9 +39,7 @@
                         span.count
                           - if @topic.likes_count >= 0
                             = @topic.likes_count
-                            '
-                            = t '.people'
-
+                        = t '.people'
                         /a.btn data-visible-to="creator" href=trash_topic_path(@topic) data-remote="true" data-method="delete" data-confirm=t('.delete_confirm')
                           i.fa.fa-trash-o
 
