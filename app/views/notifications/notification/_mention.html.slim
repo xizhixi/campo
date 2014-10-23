@@ -4,7 +4,7 @@
     a.btn.list-group-item-remove href=notification_path(notification) data-remote="true" data-method="delete"
       i.fa.fa-times
 
-    a.list-group-item-link href=comment_link(comment) target="Box" onclick="openright()"
+    a.list-group-item-link onclick="LoadComments('#{comment_link(comment)}');openright()"
       .list-group-item-avatar
         img.img-rounded alt="avatar" src=comment.user.avatar.normal.url
       .list-group-item-content
