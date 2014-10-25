@@ -23,9 +23,8 @@
           a = t '.attach_images_by2'
         br
         = markdown_area f, :body, tabIndex: 3
-        a.btn.pull-right href="##" data-behaviors="preview"
-          #slider-next
           /= t '.preview'
+        img height="200"
       li
         .text
           = t '.description1'
@@ -33,7 +32,8 @@
           = t '.description2'
         br
         = f.text_area :title, class: 'form-control', data: { behaviors: 'autosize' }, placeholder: t('.title'), tabIndex: 1
-        img height="200"
+        a.btn.pull-right href="##" data-behaviors="preview"
+          #slider-next
       li
         /a.btn.pull-right href="##" data-behaviors="preview"
         = t '.preview'
