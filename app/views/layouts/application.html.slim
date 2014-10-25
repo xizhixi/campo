@@ -75,9 +75,9 @@ html
                 = t '.done'
                 .badge = done_count(current_user)> 99 ? '99+' : done_count(current_user)
               '
-              a.btn.btn-block
+              /a.btn.btn-block
                 = t '.about'
-              '
+              /'
               a.btn.btn-block href=settings_account_path
                 = t '.settings'
               /a.btn.btn-block href=settings_profile_path

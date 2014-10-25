@@ -230,9 +230,9 @@ zh-CN:
         profile_settings: "个人资料设置"
         save_changes: "保存修改"
     sidebar:
-      account: "关于"
+      account: "关于爱与"
       notifications: "通知"
-      password: "密码"
+      password: "密码修改"
       profile: "个人资料"
   share:
     user_confirm_required:
