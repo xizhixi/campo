@@ -3,11 +3,14 @@ ul.nav.nav-pills
     .pull-right
       i.fa.fa-chevron-right
     = t '.account'
-  li class=('active' if controller_name == 'profiles')
+  /li class=('active' if controller_name == 'profiles')
     a href=settings_profile_path
       = t '.profile'
     /.pull-right
       /i.fa.fa-chevron-right
+  li class=('active' if controller_name == 'accounts')
+    a href=settings_account_path
+      = t '.account'
   li class=('active' if controller_name == 'passwords')
     a href=settings_password_path
       /i.fa.fa-chevron-right

@@ -233,7 +233,7 @@ en:
         profile_settings: Profile settings
         save_changes: Save changes
     sidebar:
-      account: Account
+      account: About
       notifications: Notifications
       password: Password
       profile: Profile

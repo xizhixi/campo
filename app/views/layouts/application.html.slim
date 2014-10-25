@@ -36,7 +36,12 @@ html
         .navbar height="100%"
           - if login?
             .panel
-              a.btn href=user_root_path(username: current_user.username)
+              /a.btn href=user_root_path(username: current_user.username)
+                img.img-rounded src=current_user.avatar.normal.url
+                  /'
+                  = current_user.name
+                  '
+              a.btn href=settings_profile_path
                 img.img-rounded src=current_user.avatar.normal.url
                   /'
                   = current_user.name
@@ -73,7 +78,9 @@ html
               a.btn.btn-block
                 = t '.about'
               '
-              a.btn.btn-block href=settings_profile_path
+              a.btn.btn-block href=settings_account_path
+                = t '.settings'
+              /a.btn.btn-block href=settings_profile_path
                 = t '.settings'
             .panel
               a.btn.btn-success.btn-block href=new_topic_path(category_id: @category.try(:slug))

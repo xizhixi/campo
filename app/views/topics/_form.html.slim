@@ -12,9 +12,9 @@
       });
     });
 
+  br
   .slider data-snap-ignore="true"
     ul.bxslider
-
       li
         = markdown_area f, :body, tabIndex: 3
         a.btn.pull-right href="##" data-behaviors="preview"
@@ -24,7 +24,7 @@
         = f.text_area :title, class: 'form-control', data: { behaviors: 'autosize' }, placeholder: t('.title'), tabIndex: 1
         .text.text-muted
           = t '.description'
-        img height="400"
+        img height="300"
       li
         /a.btn.pull-right href="##" data-behaviors="preview"
         = t '.preview'

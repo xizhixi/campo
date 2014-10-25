@@ -16,7 +16,7 @@
     = file_field_tag :file, multiple: true, tabIndex: 99
     .text.text-muted
       a = t '.attach_images_by'
-    = form.text_area name, class: 'form-control', data: { behaviors: 'autosize' }, tabIndex: tabIndex
+    = form.text_area name, class: 'form-control', class: 'hidden', data: { behaviors: 'autosize' }, tabIndex: tabIndex
 
 /    .tab-pane id=preview_pane_id
 /  a href="##" data-behaviors="preview"
