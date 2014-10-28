@@ -6,7 +6,7 @@
       .col-md-3
         = render 'settings/sidebar'
       .col-md-9
-        .panel
+        .panel style="background-color: #D5E5FF;"
           .panel-body
             = form_for @user, url: settings_profile_path, html: { multipart: true, class: 'form-horizontal user-form' } do |f|
               = render 'share/flash_messages'

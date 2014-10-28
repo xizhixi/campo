@@ -37,5 +37,6 @@ test:
 
 production:
   <<: *default
+
   admin_emails:
-    - admin@example.com
+    # - admin@example.com
