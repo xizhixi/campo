@@ -24,7 +24,7 @@
                         = ' · '
                         /a href=categoried_topics_path(category_id: @topic.category.slug)
                         = @topic.category.name
-                    h = @topic.title
+                    h3 = @topic.title
                     article.comment-body data-visible-to="done"
                       = markdown_format @topic.body
                     .list-group-item-actions.clearfix
