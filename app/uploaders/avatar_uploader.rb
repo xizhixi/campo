@@ -30,11 +30,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
   VERSION_SIZES.each do |version_name, size|
     version version_name do
       if version_name.to_s == "original"
-        process resize_to_limit: [size, size*16/9]
         process :exif_rotation
+        process resize_to_fill: [size, size*16/9]
       else
-        process resize_to_fill: [size, size]
         process :exif_rotation
+        process resize_to_fill: [size, size]
       end
     end
   end
