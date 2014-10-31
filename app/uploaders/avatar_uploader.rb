@@ -7,6 +7,14 @@ class AvatarUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  def exif_rotation
+    manipulate! do |img|
+      img.auto_orient
+      img = yield(img) if block_given?
+      img
+    end
+  end
+
   VERSION_SIZES = {
     normal: 48,
     bigger: 96,
@@ -23,8 +31,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
     version version_name do
       if version_name.to_s == "original"
         process resize_to_limit: [size, size*16/9]
+        process :exif_rotation
       else
         process resize_to_fill: [size, size]
+        process :exif_rotation
       end
     end
   end
