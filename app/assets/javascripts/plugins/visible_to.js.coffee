@@ -47,7 +47,7 @@ campo.VisibleTo =
         $('.count').each ->
           done_id = $(this).closest('[data-creator-id]').data('creator-id')
           done_num = $(this).text()
-          if campo.currentUser? and ((campo.currentUser.id == topic_creator_id) or (campo.currentUser.id == done_id) and (done_num == '1'))
+          if campo.currentUser? and ((campo.currentUser.id == topic_creator_id) or (campo.currentUser.id == done_id) and (done_num != ''))
             authorized = true
             return false
         if !authorized
