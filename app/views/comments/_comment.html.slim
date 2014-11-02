@@ -21,9 +21,10 @@
             i.fa.fa-reply
           a.btn data-visible-to="topic-creator" id="like-for-comment-#{comment.id}" href=comment_like_path(comment) data-remote="true" data-method="post"
             i.fa.fa-heart
-	  span.count 
-	   - if comment.likes.count > 0
-	     = t '.selected'
+          = comment.likes_count
+          span.count
+            - if comment.likes_count > 0
+              = t '.selected'
 
           /a.btn href=edit_comment_path(comment) data-remote="true" data-visible-to="creator" target="_parent"
             i.fa.fa-pencil

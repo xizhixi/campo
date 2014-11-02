@@ -16,14 +16,14 @@ zh-CN:
         created_at: "创建于"
         user: "用户"
       user:
-        avatar: "头像"
+        avatar: "上传一张你最喜欢的大图作为头像吧~首页看到的就是各位小伙伴的全屏大头像哦。"
         bio: "简介"
         created_at: "创建于"
         email: Email
         locale: "语言"
-        name: "全名"
-        password: "密码"
-        password_confirmation: "密码确认"
+        name: "昵称"
+        password: "新密码"
+        password_confirmation: "确认新密码"
         username: "用户名"
     errors:
       models:
@@ -230,6 +230,7 @@ zh-CN:
         profile: "个人资料"
         profile_settings: "个人资料设置"
         save_changes: "保存修改"
+        avatar: "上传一张你最喜欢的大图作为头像吧~首页看到的就是各位小伙伴的全屏大头像哦。"
     sidebar:
       account: "关于爱与"
       notifications: "通知"

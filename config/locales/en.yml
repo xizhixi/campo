@@ -233,6 +233,7 @@ en:
         profile: Profile
         profile_settings: Profile settings
         save_changes: Save changes
+        avatar: It's important to choose a best photo as your avatar, since it'll be shown fullscreen in the homepage.
     sidebar:
       account: About
       notifications: Notifications
