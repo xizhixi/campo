@@ -25,3 +25,8 @@ $(document).on 'page:change', ->
   NProgress.done()
 $(document).on 'page:restore', ->
   NProgress.remove()
+
+$(document).ready ->
+  $(document).bind "contextmenu", (e) ->
+    false
+  return
