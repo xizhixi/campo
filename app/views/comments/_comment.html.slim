@@ -15,6 +15,7 @@
         = markdown_format comment.body
       .list-group-item-actions.clearfix
         .pull-right
+          = comment.user_id
           /a.btn data-reply-to="@#{comment.user.username} ##{comment.id} "
             i.fa.fa-reply
           a.btn data-reply-to="@#{comment.user.username} "
@@ -27,6 +28,7 @@
                 = comment.likes_count
           - if comment.likes_count > 0
             = t '.selected'
+          = comment.user_id
 
           /a.btn href=edit_comment_path(comment) data-remote="true" data-visible-to="creator" target="_parent"
             i.fa.fa-pencil
