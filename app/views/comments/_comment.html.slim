@@ -15,6 +15,17 @@
         = markdown_format comment.body
       .list-group-item-actions.clearfix
         .pull-right
+          = comment.commentable_id
+          '
+          = comment.commentable_type
+          '
+          = comment.id
+          '
+          = comment.body
+          '
+          = comment.user_id
+          '
+          = comment.likes_count
           /a.btn data-reply-to="@#{comment.user.username} ##{comment.id} "
             i.fa.fa-reply
           a.btn data-reply-to="@#{comment.user.username} "
