@@ -6,12 +6,11 @@
 #= require jquery.validate
 #= require jquery.timeago
 #= require nprogress
-#= require love
 #= require_tree ./plugins
 #= require jquery.bxslider.min
 #= require snap.min
 #= require demo
-
+#= require campo
 
 
 $(document).on 'page:update', ->
