@@ -4,13 +4,12 @@ class Users::TopicsController < Users::ApplicationController
   end
 
   def likes
-    #@topics = @user.like_topics.includes(:category, :user).order(id: :desc).page(params[:page])
-    @topics = @user.like_topics.includes(:comments).where(comments: {user: @user, likes_count: 0}).uniq.order(id: :desc).page(params[:page])
+    @topics = @user.like_topics.where.not(id: @user.like_topics.joins(:comments).where(comments: {user: @user, likes_count: 1}).ids).order(id: :desc).page(params[:page])
     render :index
   end
 
   def done
-    @topics = @user.like_topics.includes(:comments).where(comments: {user: @user, likes_count: 1}).order(id: :desc).page(params[:page])
+    @topics = @user.like_topics.joins(:comments).where(comments: {user: @user, likes_count: 1}).order(id: :desc).page(params[:page])
     render :index
   end
 end
