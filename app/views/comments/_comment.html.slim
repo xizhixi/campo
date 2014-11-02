@@ -25,6 +25,7 @@
             span.count
               - if comment.likes_count > 0
                 = comment.likes_count
+          - if comment.likes_count > 0
             = t '.selected'
 
           /a.btn href=edit_comment_path(comment) data-remote="true" data-visible-to="creator" target="_parent"
