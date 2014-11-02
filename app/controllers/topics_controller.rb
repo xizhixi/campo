@@ -52,7 +52,7 @@ class TopicsController < ApplicationController
 
     @comments = @topic.comments.includes(:user).order(id: :asc).page(params[:page])
 =end
-    @comments = @topic.comments.includes(:user, :likes_count).order(id: :asc)
+    @comments = @topic.comments.includes(:user).order(id: :asc)
 
     respond_to do |format|
       format.html
