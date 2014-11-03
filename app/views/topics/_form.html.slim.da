@@ -1,0 +1,73 @@
+= form_for @topic, remote: true, html: { class: 'topic-form' } do |f|
+  javascript:
+    $(document).ready(function () {
+      $('.bxslider').bxSlider({
+        mode: 'fade',
+        infiniteLoop: false,
+        controls: true,
+        pager: true,
+        oneToOneTouch: true,
+        nextSelector: '#slider-next',
+        prevSelector: '#slider-prev',
+        nextText: '下一步'
+      });
+    });
+
+  br
+  .slider data-snap-ignore="true"
+    ul.bxslider
+      li
+        .text
+          a = t '.attach_images_by1'
+        .text
+          a = t '.attach_images_by2'
+        br
+        = markdown_area f, :body, tabIndex: 3
+          /= t '.preview'
+        img height="200"
+      li
+        .text
+          = t '.description1'
+        .text
+          = t '.description2'
+        br
+        = f.text_area :title, class: 'form-control', data: { behaviors: 'autosize' }, placeholder: t('.title'), tabIndex: 1
+        a.btn.pull-right href="##" data-behaviors="preview"
+          #slider-next
+      li
+        /a.btn.pull-right href="##" data-behaviors="preview"
+        = t '.preview'
+        article.preview
+
+    /#slider-next.btn.btn-default
+    - if topic.new_record?
+      = f.submit t('.create_topic'), class: 'btn btn-success pull-right', tabIndex: 4, 'data-disable-with' => t('.create_topic')
+    - else
+      = f.submit t('.save_changes'), class: 'btn btn-success pull-right', tabIndex: 4, 'data-disable-with' => t('.save_changes')
+      /'
+      /a.btn.btn-default href=topic_path(@topic) tabIndex="5"
+        = t '.cancel'
+    a.btn.btn-default href=root_path tabIndex="5"
+      = t '.cancel'
+
+- form_id = @topic.new_record? ? 'new_topic' : "edit_topic_#{@topic.id}"
+
+javascript:
+  $('##{form_id}').validate({
+    rules: {
+      'topic[title]': {
+        required: true
+      },
+      'topic[body]': {
+        required: true
+      }
+    },
+    messages: {
+      'topic[title]': {
+        required: '#{@topic.errors.generate_message :title, :blank}'
+      },
+      'topic[body]': {
+        required: '#{@topic.errors.generate_message :body, :blank}'
+      }
+    }
+  });

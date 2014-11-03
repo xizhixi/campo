@@ -21,7 +21,6 @@
             i.fa.fa-reply
           a.btn data-visible-to="topic-creator" id="like-for-comment-#{comment.id}" href=comment_like_path(comment) data-remote="true" data-method="post"
             i.fa.fa-heart
-          = comment.likes_count
           span.count
             - if comment.likes_count > 0
               = t '.selected'

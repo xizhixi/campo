@@ -4,7 +4,7 @@
 - preview_pane_id = "preview_#{resource_name}_#{resource.try(:id) || 'new'}"
 - tabIndex ||= nil
 
-.markdown-area
+.markdown-area style='width: 50%; margin-left: 25%'
   /ul.nav.nav-tabs
     li.active
       a href="##{write_pane_id}" data-toggle="tab"
@@ -14,8 +14,8 @@
         = t '.preview'
   .file-upload
     = file_field_tag :file, multiple: true, tabIndex: 99
-    .text.text-muted
-      a = t '.select_them'
+    .btn.btn-lg.btn-block
+      = t '.select_them'
     = form.text_area name, class: 'form-control', class: 'hidden', data: { behaviors: 'autosize' }, tabIndex: tabIndex
 
 /    .tab-pane id=preview_pane_id

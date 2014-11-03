@@ -33,66 +33,56 @@ html
   body
     .snap-drawers style="background-color: #F3F3F3;"
       .snap-drawer-left
-        .navbar height="100%" style="background-color: #F3F3F3;"
+        .navbar height="100%"
           - if login?
             .panel
-              /a.btn href=user_root_path(username: current_user.username)
-                img.img-rounded src=current_user.avatar.normal.url
-                  /'
+            .panel
+              a href=settings_profile_path
+                img.img-rounded src=current_user.avatar.normal.url style='margin-left: 10%'
+                .btn style='margin-bottom: 10%'
                   = current_user.name
-                  '
-              a.btn href=settings_profile_path
-                img.img-rounded src=current_user.avatar.normal.url
-                  /'
-                  = current_user.name
-                  '
-              a.btn.notifications-bell.pull-right href=notifications_path
+              a.btn.btn-lg.notifications-bell.pull-right href=notifications_path
                 i.fa.fa-bell-o
                   - if unread_notifications_count > 0
                     .badge = unread_notifications_count > 99 ? '99+' : unread_notifications_count
-              '
-              a.btn.btn-block href=root_path onclick="launchFullscreen(document.documentElement);"
-                = t '.LoveAnd'
+              a.btn.btn-block style='margin-left: 10%' href=root_path onclick="launchFullscreen(document.documentElement);"
+                .text-left
+                  = t '.LoveAnd'
               /- if login? and !current_user.confirmed?
                 = render 'share/user_confirm_required'
               /a.btn.btn-primary href=url_for(tab: 'hot')
                 = t '.hot'
               /a.btn.btn-primary href=url_for(tab: 'newest')
                 = t '.newest'
-              /a.btn.btn-block
-                = t '.points'
-                = t '.exp'
-              '
-              a.btn.btn-block href=user_topics_path(username: current_user.username)
-                = t '.post'
-                .badge = posted_count(current_user)> 99 ? '99+' : posted_count(current_user)
-              '
-              a.btn.btn-block href=likes_user_topics_path(username: current_user.username)
-                = t '.taken'
-                .badge = accepted_count(current_user)> 99 ? '99+' : accepted_count(current_user)
-              '
-              a.btn.btn-block href=done_user_topics_path(username: current_user.username)
-                = t '.done'
-                .badge = done_count(current_user)> 99 ? '99+' : done_count(current_user)
-              '
-              /a.btn.btn-block
-                = t '.about'
-              /'
-              a.btn.btn-block href=settings_account_path
-                = t '.settings'
-              /a.btn.btn-block href=settings_profile_path
-                = t '.settings'
             .panel
-              a.btn.btn-success.btn-block href=new_topic_path(category_id: @category.try(:slug))
-                = t '.create_topic'
+              a.btn.btn-block style='margin-left: 10%' href=user_topics_path(username: current_user.username)
+                .text-left
+                  = t '.post'
+                  .badge = posted_count(current_user)> 99 ? '99+' : posted_count(current_user)
+              '
+              a.btn.btn-block style='margin-left: 10%' href=likes_user_topics_path(username: current_user.username)
+                .text-left
+                  = t '.taken'
+                  .badge = accepted_count(current_user)> 99 ? '99+' : accepted_count(current_user)
+              '
+              a.btn.btn-block style='margin-left: 10%' href=done_user_topics_path(username: current_user.username)
+                .text-left
+                  = t '.done'
+                  .badge = done_count(current_user)> 99 ? '99+' : done_count(current_user)
+            .panel
+              a.btn.btn-block style='margin-left: 10%' href=settings_account_path
+                .text-left
+                  = t '.settings'
+            a.btn.btn-success style='width: 80%; margin-left: 10%' href=new_topic_path(category_id: @category.try(:slug))
+              = t '.create_topic'
           - else
             .panel
               img height="100"
             .panel
-              a.btn.btn-block href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+              a.btn.btn-block style='margin-left: 10%' href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath))
                 = t '.sign_up'
             .panel
-              a.btn.btn-block href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+              a.btn.btn-block style='margin-left: 10%' href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
                 = t '.sign_in'
       .snap-drawer-right
         iframe#Box frameborder="0" style="position: absolute; height: 103%" scrolling="0"
