@@ -89,6 +89,7 @@ Rails.application.routes.draw do
     resource :password, only: [:show, :update]
     resource :profile, only: [:show, :update]
     resource :notifications, only: [:show, :update]
+    resource :about, only: [:show, :update]
   end
 
   namespace :admin do

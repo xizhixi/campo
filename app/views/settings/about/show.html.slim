@@ -1,0 +1,28 @@
+- @page_title = t '.about_settings'
+
+.main
+  .container
+    .row
+      .col-md-3
+        = render 'settings/sidebar'
+      .col-md-9
+        .panel style="background-color: #D5E5FF;"
+          .panel-body
+            p 社交以有爱为本
+            br
+            p 爱与是一款基于深度契约精神的清新社交软件。
+            p 您可以通过发起任务，来集结你的女神/男神和获得更高的关注度；
+            p 也可以通过完成任务，来得到你关注的人提供的任务奖励；
+            p 愿处处有爱。
+            br
+            p 关于我们的团队。
+            p 我们是一群顶着00后思维的80后靠谱大龄青年。欢迎与我们一起探讨产品，任何意见和建议请发送到：
+            a href="mailto:loveandhelp@126.com" loveandhelp@126.com
+
+
+javascript:
+  var snapper = new Snap({
+    element: document.getElementById('content'),
+    disable: 'right',
+    hyperextensible: false
+  });

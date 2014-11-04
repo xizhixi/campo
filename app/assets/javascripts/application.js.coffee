@@ -11,6 +11,9 @@
 #= require jquery.bxslider.min
 #= require snap.min
 #= require demo
+#= require intro
+
+
 
 $(document).on 'page:update', ->
   $('[data-behaviors~=autosize]').autosize()
