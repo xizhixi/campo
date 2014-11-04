@@ -12,6 +12,9 @@ class LikesController < ApplicationController
     case @commentable
     when Topic
       @comment = @commentable.comments.create(body: 'accept!', user: current_user)
+      if @comment
+        Resque.enqueue(CommentNotificationJob, @comment.id)
+      end
     when Comment
       @commentable.commentable.update(category_id: 1)
     end
