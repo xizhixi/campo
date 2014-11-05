@@ -20,8 +20,11 @@
           a.btn data-reply-to="@#{comment.user.username} "
             i.fa.fa-reply
           a.btn data-visible-to="topic-creator" id="like-for-comment-#{comment.id}" href=comment_like_path(comment) data-remote="true" data-method="post"
+            - if comment.likes_count < 1
+              = t '.select'
+            '
             i.fa.fa-heart
-          span.count
+          span.count.text style='color: #D9534F'
             - if comment.likes_count > 0
               = t '.selected'
 

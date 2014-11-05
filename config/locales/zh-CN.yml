@@ -109,6 +109,7 @@ zh-CN:
     comment:
       delete_confirm: "你确定要删除此评论吗？"
       selected: "任务完成"
+      select: "萌萌哒，就是你~"
     form:
       cancel: "取消"
       save_changes: "保存修改"
