@@ -11,7 +11,7 @@ class LikesController < ApplicationController
     @commentable = resource.singularize.classify.constantize.find(id)
     case @commentable
     when Topic
-      @comment = @commentable.comments.create(body: 'accept!', user: current_user)
+      @comment = @commentable.comments.create(body: 'Your wish, my command.', user: current_user)
       if @comment
         Resque.enqueue(CommentNotificationJob, @comment.id)
       end
@@ -27,7 +27,7 @@ class LikesController < ApplicationController
     when Topic
       @likeable.likes.where(user: current_user).destroy_all
       @commentable.comments.each do |c|
-        c.destroy if c.user == current_user and c.body == 'accept!'
+        c.destroy if c.user == current_user and c.body == 'Your wish, my command.'
       end
     when Comment
       render :forbidden

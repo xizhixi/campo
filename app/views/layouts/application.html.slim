@@ -7,6 +7,10 @@ html
     = javascript_include_tag "application", "data-turbolinks-track" => true
     - if I18n.locale != 'en'
       = javascript_include_tag "locales/#{I18n.locale}"
+    link href="touch-icon-iphone.png" rel="apple-touch-icon"
+    link href="touch-icon-ipad.png" rel="apple-touch-icon" sizes="72x72"
+    link href="touch-icon-iphone-retina.png" rel="apple-touch-icon" sizes="114x114"
+    link href="touch-icon-ipad-retina.png" rel="apple-touch-icon" sizes="144x144"
     meta name="apple-mobile-web-app-capable" content="yes"
     meta name="viewport" content="width=device-width, minimal-ui, initial-scale=1.0"
     meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"
@@ -41,15 +45,13 @@ html
                 img.img-rounded src=current_user.avatar.normal.url style='margin-left: 10%'
                 .btn style='margin-bottom: 10%'
                   = current_user.name
-              a.btn.btn-lg.notifications-bell.pull-right href=notifications_path
+              a.btn.btn-lg.notifications-bell.pull-right href=notifications_path data-intro=("This is a tooltip!") data-step="1"
                 i.fa.fa-bell-o
                   - if unread_notifications_count > 0
                     .badge = unread_notifications_count > 99 ? '99+' : unread_notifications_count
               a.btn.btn-block style='margin-left: 10%' href=root_path onclick="launchFullscreen(document.documentElement);"
                 .text-left
                   = t '.LoveAnd'
-              /- if login? and !current_user.confirmed?
-                = render 'share/user_confirm_required'
               /a.btn.btn-primary href=url_for(tab: 'hot')
                 = t '.hot'
               /a.btn.btn-primary href=url_for(tab: 'newest')
@@ -75,14 +77,17 @@ html
                   = t '.settings'
             a.btn.btn-success style='width: 80%; margin-left: 10%' href=new_topic_path(category_id: @category.try(:slug))
               = t '.create_topic'
+            /.btn.btn-large.btn-success onclick="javascript:introJs().setOption('showProgress', true).start();"
+              = t '.Tutorial'
           - else
             .panel
-              img height="100"
+              .btn.btn-block
+                img src="touch-icon-ipad.png"
             .panel
-              a.btn.btn-block style='margin-left: 10%' href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+              a.btn.btn-block href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath))
                 = t '.sign_up'
             .panel
-              a.btn.btn-block style='margin-left: 10%' href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+              a.btn.btn-block href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
                 = t '.sign_in'
       .snap-drawer-right
         iframe#Box frameborder="0" style="position: absolute; height: 103%" scrolling="0"
