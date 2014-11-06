@@ -20,18 +20,7 @@ html
         campo.currentUser = {
           id: #{current_user.id}
         };
-    javascript:
-      function launchFullscreen(element) {
-        if (element.requestFullscreen) {
-          element.requestFullscreen();
-        } else if (element.mozRequestFullScreen) {
-          element.mozRequestFullScreen();
-        } else if (element.webkitRequestFullscreen) {
-          element.webkitRequestFullscreen();
-        } else if (element.msRequestFullscreen) {
-          element.msRequestFullscreen();
-        }
-      }
+
 
 
   body
@@ -49,7 +38,7 @@ html
                 i.fa.fa-bell-o
                   - if unread_notifications_count > 0
                     .badge = unread_notifications_count > 99 ? '99+' : unread_notifications_count
-              a.btn.btn-block style='margin-left: 10%' href=root_path onclick="launchFullscreen(document.documentElement);"
+              a.btn.btn-block style='margin-left: 10%' href=root_path
                 .text-left
                   = t '.LoveAnd'
               /a.btn.btn-primary href=url_for(tab: 'hot')
