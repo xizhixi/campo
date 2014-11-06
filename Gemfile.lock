@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/xizhixi/turbolinks.git
+  remote: git://github.com/chloerei/turbolinks.git
   revision: 17f031be2d9e234f068e5fd408e7f81b43288cbb
   branch: reset-scroll-position
   specs:
