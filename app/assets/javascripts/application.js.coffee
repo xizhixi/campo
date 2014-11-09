@@ -11,6 +11,7 @@
 #= require jquery.bxslider.min
 #= require snap.min
 #= require intro
+#= require ms
 
 
 $(document).on 'page:update', ->

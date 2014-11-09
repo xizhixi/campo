@@ -1,3 +1,10 @@
 - cache [topic, locale] do
-  li
-    img.img-responsive alt="avatar" src=topic.user.avatar.original.url onclick="LoadComments('#{topic_path(topic)}')" title=topic.user.name+"\t"+time_ago_tag(topic.created_at)+"<br><br>"+topic.title+"<br><br><br><br><br>"
+  .ms-slide onclick="LoadComments('#{topic_path(topic)}')"
+    img src="blank.gif" data-src=topic.user.avatar.original.url
+    .ms-layer.tbox data-delay="250" data-effect="skewleft(15,250)" data-origin="bc" data-resize="false"
+      .small-text
+        = time_ago_tag topic.created_at
+        = "    "
+        = topic.user.name
+      .medium-text
+        = topic.title
