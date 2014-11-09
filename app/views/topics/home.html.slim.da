@@ -1,6 +1,30 @@
-div data-role="content"
-  #swiper-container.swiper-container
-    .swiper-wrapper
-      = render partial: 'home', collection: @topics, as: :topic
-    - if @topics.total_pages > 1
-      = paginate @topics, theme: 'campo'
+javascript:
+  $(document).ready(function () {
+    $('.bxslider').bxSlider({
+      mode: 'vertical',
+      infiniteLoop: false,
+      pager: false,
+      captions: true,
+      oneToOneTouch: false,
+      preventDefaultSwipeY: true,
+      nextSelector: '#slider-next',
+      prevSelector: '#slider-prev'
+    });
+  });
+.slider
+  ul.bxslider
+    = render partial: 'home', collection: @topics, as: :topic
+  - if @topics.total_pages > 1
+    = paginate @topics, theme: 'campo'
+
+javascript:
+  var snapper = new Snap({
+    element: document.getElementById('content'),
+    //hyperextensible: false
+  });
+
+javascript:
+  function LoadComments(url) {
+    $("#Box").attr("src", url);
+    snapper.open('right');
+  };
