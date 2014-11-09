@@ -13,7 +13,6 @@
 #= require intro
 
 
-
 $(document).on 'page:update', ->
   $('[data-behaviors~=autosize]').autosize()
 
