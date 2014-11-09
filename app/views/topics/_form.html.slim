@@ -9,11 +9,10 @@
         oneToOneTouch: true,
         nextSelector: '#slider-next',
         prevSelector: '#slider-prev',
-        nextText: '下一步'
+        nextText: '预览'
       });
     });
 
-  br
   .slider data-snap-ignore="true"
     ul.bxslider
       li
@@ -24,7 +23,7 @@
         br
         = markdown_area f, :body, tabIndex: 3
           /= t '.preview'
-        img height="200"
+        img height="250"
       li
         .text
           = t '.description1'
