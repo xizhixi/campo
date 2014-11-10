@@ -29,8 +29,6 @@
               .form-group
                 .col-sm-6.col-sm-push-3
                   = f.submit t('.save_changes'), class: 'btn btn-primary', tabIndex: 4
-              a.btn.btn-warning href=logout_path data-method="delete"
-                = t '.logout'
       .col-md-9
         - if login? and !current_user.confirmed?
           = render 'share/user_confirm_required'

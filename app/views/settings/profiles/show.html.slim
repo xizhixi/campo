@@ -29,6 +29,12 @@
               .form-group
                 .col-sm-6.col-sm-push-3
                   = f.submit t('.save_changes'), class: 'btn btn-primary', tabIndex: 5
+      .col-md-9
+        .panel style="background-color: #D5E5FF;"
+          .panel-body
+            a.btn.btn-warning href=logout_path data-method="delete"
+              = t '.logout'
+
 
 javascript:
   var snapper = new Snap({
