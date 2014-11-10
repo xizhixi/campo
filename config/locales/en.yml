@@ -154,8 +154,6 @@ en:
     zh-TW: Chinese(Traditional)
   markdown:
     area:
-      attach_images_by1: Let's upload your most incredible photo for those fellas finishing your request
-      attach_images_by2: Just click below
       preview: Preview
       select_them: Select them
       write: Write
@@ -268,7 +266,12 @@ en:
       no_category: No category
       save_changes: Save changes
       title: Title
-      description: Add your request description here
+      description1: You can describe your request in a simple way or in an accurate way, as you wish.
+      description2: It is also okayto let people know what's the photo about. After preview confirmation, it's ok to launch your request.
+      preview: Preview
+      attach_images_by1: Let's upload your most fabulous photo for those fellas finishing your request.
+      attach_images_by2: Clicking above button would've done the job.
+      attach_images_by3: Uploading big size images will take longertime, please pay a little more patience :p
     index:
       all_categories: All categories
       create_topic: Create topic

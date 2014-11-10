@@ -151,8 +151,6 @@ zh-CN:
     zh-TW: "正体中文"
   markdown:
     area:
-      attach_images_by1: "以你的美图作为给完成任务的小伙伴的奖励实在是再适合不过啦。"
-      attach_images_by2: "点击上传一张吧，没完成任务的小伙伴是看不见的哦~"
       preview: "预览"
       select_them: "选择文件"
       write: "编辑"
@@ -266,7 +264,8 @@ zh-CN:
       description2: "稍微透露下你的美图的信息也可以哦。到最后一页确认美图之后，就可以成功发布了~"
       preview: "美图预览"
       attach_images_by1: "以你的美图作为给完成任务的小伙伴的奖励实在是再适合不过啦。"
-      attach_images_by2: "点击上传一张吧，没完成任务的小伙伴是看不见的哦~"
+      attach_images_by2: "点击上传一张吧，没完成任务的小伙伴是看不见的哦。"
+      attach_images_by3: "传的图片较大的话，上传会需要花点时间，请耐心等待~"
     index:
       all_categories: "所有分类"
       create_topic: "创建话题"

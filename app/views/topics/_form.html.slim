@@ -27,14 +27,16 @@
         .btn.btn-default.pull-right
           #goto1
             = t '.next'
-        img height="160"
+        img height="40"
         = markdown_area f, :body, tabIndex: 3
         br
         .text style='width: 70%; margin-left: 15%'
           a = t '.attach_images_by1'
         .text style='width: 70%; margin-left: 15%'
           a = t '.attach_images_by2'
-        img height="160"
+        .text style='width: 70%; margin-left: 15%'
+          a = t '.attach_images_by3'
+        img height="250"
       li
         .btn.btn-default
           #goto0
@@ -55,7 +57,6 @@
           = f.submit t('.create_topic'), class: 'btn btn-success pull-right', tabIndex: 4, 'data-disable-with' => t('.create_topic')
         - else
           = f.submit t('.save_changes'), class: 'btn btn-success pull-right', tabIndex: 4, 'data-disable-with' => t('.save_changes')
-        img height="10"
         article.preview
 
 - form_id = @topic.new_record? ? 'new_topic' : "edit_topic_#{@topic.id}"
