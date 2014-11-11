@@ -33,18 +33,13 @@
 
   javascript:
     var snapper = new Snap({
-      element: document.getElementById('content'),
-      hyperextensible: false
+      element: document.getElementById('content')//,
+      //hyperextensible: false
     });
 
   javascript:
     function LoadComments(url) {
       $("#Box").attr("src", url);
-    }
-    ;
-
-  javascript:
-    function openright() {
-      snapper.open('right');
+      snapper.expand('right');
     }
     ;
