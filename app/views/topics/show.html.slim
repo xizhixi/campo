@@ -10,7 +10,8 @@
               .list-group.list-group-campo
                 .list-group-item.comment data-creator-id=@topic.user_id
                   a.list-group-item-avatar href=user_link(@topic.user) target="_parent"
-                    img.img-rounded alt="avatar" src=@topic.user.avatar.normal.url
+                    p
+                      img.img-rounded alt="avatar" src=@topic.user.avatar.normal.url
                   .list-group-item-content
                     .list-group-item-heading
                       a.comment-user href=user_link(@topic.user) target="_parent"

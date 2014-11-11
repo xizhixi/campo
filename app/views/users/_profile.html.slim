@@ -1,10 +1,14 @@
+javascript:
+  $(function () {
+    $('a').fluidbox();
+  });
+
 .panel.user-profile
   .panel-body
-    .user-profile-avatar
-      img.img-rounded alt="avatar" src=user.avatar.bigger.url
+    a.user-profile-avatar href=user.avatar.original.url
+      img.img-rounded alt="avatar" src=user.avatar.original.url
     .user-profile-name
       = user.name
-      '
       br
       span.text-muted = "@#{user.username}"
     .user-profile-bio
