@@ -1,7 +1,7 @@
 - @page_title = @topic.title
 
-.main.nopadding
-  .container.nopadding width="auto"
+.main
+  .container
     .row
       .col-md-9
         .panel.nopadding
@@ -37,15 +37,15 @@
                         span.count
                           - if @topic.likes_count > 0
                             = @topic.likes_count
-                      a.btn data-visible-to="creator" href=edit_topic_path(@topic) target="_parent"
+                      a.btn.pull-right data-visible-to="creator" href=edit_topic_path(@topic) target="_parent"
                         i.fa.fa-pencil
                       /a.btn data-visible-to="creator" href=trash_topic_path(@topic) data-remote="true" data-method="delete" data-confirm=t('.delete_confirm')
                         i.fa.fa-trash-o
                       br
                       br
                       - if @topic.likes_count > 0
-                        /- if @topic.likes_count > 0
                         = @topic.likes_count
+                        '
                         = t '.people'
                       br
                       .text style='color: #D9534F'
@@ -95,11 +95,10 @@
               = t '.to_comment'
 
         .panel
-          .panel-heading
+          .panel-body
             h4.panel-title
               = t '.related_topics'
             br
-          .panel-body
             - cache [@topic, 'related_topics', locale] do
               .list-group.list-group-campo
                 - more_like_this_topics = @topic.more_like_this
@@ -130,4 +129,9 @@
           required: '#{Comment.new.errors.generate_message :body, :blank}'
         }
       }
+    });
+
+  javascript:
+    $(function () {
+      $('a').fluidbox();
     });

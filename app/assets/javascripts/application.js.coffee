@@ -11,7 +11,7 @@
 #= require jquery.bxslider.min
 #= require snap.min
 #= require intro
-
+#= require jquery.fluidbox.min
 
 $(document).on 'page:update', ->
   $('[data-behaviors~=autosize]').autosize()
