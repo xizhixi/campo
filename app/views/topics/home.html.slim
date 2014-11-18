@@ -1,18 +1,21 @@
-#slider.master-slider
-  = render partial: 'home', collection: @topics, as: :topic
-  /- if @topics.total_pages > 1
-      = paginate @topics, theme: 'campo'
-
 javascript:
-  $('#slider').masterslider({
-    speed: 50,
-    layout: "fullscreen",
-    fullscreenMargin: 0,
-    space: 0,
-    wheel: true,
-    dir: "v",
-    preload: 4
+  $(document).ready(function () {
+    $('.bxslider').bxSlider({
+      mode: 'vertical',
+      infiniteLoop: false,
+      pager: false,
+      captions: true,
+      oneToOneTouch: false,
+      preventDefaultSwipeY: true,
+      nextSelector: '#slider-next',
+      prevSelector: '#slider-prev'
+    });
   });
+.slider
+  ul.bxslider
+    = render partial: 'home', collection: @topics, as: :topic
+  - if @topics.total_pages > 1
+    = paginate @topics, theme: 'campo'
 
 javascript:
   var snapper = new Snap({

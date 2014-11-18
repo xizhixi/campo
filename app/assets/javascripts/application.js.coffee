@@ -12,9 +12,6 @@
 #= require snap.min
 #= require intro
 #= require jquery.fluidbox.min
-#= require ms
-
-
 
 $(document).on 'page:update', ->
   $('[data-behaviors~=autosize]').autosize()

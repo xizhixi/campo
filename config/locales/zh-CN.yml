@@ -266,8 +266,6 @@ zh-CN:
       attach_images_by1: "以你的美图作为给完成任务的小伙伴的奖励实在是再适合不过啦。"
       attach_images_by2: "点击上传一张吧，没完成任务的小伙伴是看不见的哦。"
       attach_images_by3: "传的图片较大的话，上传会需要花点时间，请耐心等待~"
-      next: "下一步"
-      prev: "上一步"
     index:
       all_categories: "所有分类"
       create_topic: "创建话题"
