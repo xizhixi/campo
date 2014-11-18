@@ -16,7 +16,7 @@ html, body {
   left: 0;
   width: auto;
   height: auto;
-  z-index: 3;
+  z-index: 10;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   -webkit-transform: translate3d(0, 0, 0);
@@ -46,7 +46,7 @@ html, body {
   left: 0;
   width: 100%;
   height: auto;
-  z-index: 2;
+  z-index: 5;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
   -webkit-transition: width 0.3s ease;
@@ -64,7 +64,7 @@ html, body {
   bottom: 0;
   width: 240px;
   height: auto;
-  overflow: visible;
+  overflow: hidden;
   -webkit-overflow-scrolling: touch;
   -webkit-transition: width 0.3s ease;
     -moz-transition: width 0.3s ease;

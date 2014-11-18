@@ -79,6 +79,6 @@ html
               a.btn.btn-block href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
                 = t '.sign_in'
       .snap-drawer-right
-        iframe#Box frameborder="0" style="position: absolute; height: 100%; width: 100%" scrolling="0"
+        iframe#Box frameborder="2" style="position: absolute; height: 100%; width: 100%" scrolling="0"
     #content.snap-content
       = yield
