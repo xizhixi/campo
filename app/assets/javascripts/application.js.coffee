@@ -10,7 +10,6 @@
 #= require_tree ./plugins
 #= require jquery.bxslider.min
 #= require snap.min
-#= require intro
 #= require jquery.fluidbox.min
 #= require ms
 

@@ -11,6 +11,7 @@ html
     link href="touch-icon-ipad.png" rel="apple-touch-icon" sizes="72x72"
     link href="touch-icon-iphone-retina.png" rel="apple-touch-icon" sizes="114x114"
     link href="touch-icon-ipad-retina.png" rel="apple-touch-icon" sizes="144x144"
+    link href="splash.png" rel="apple-touch-startup-image"
     meta name="apple-mobile-web-app-capable" content="yes"
     meta name="viewport" content="width=device-width, minimal-ui, initial-scale=1.0, user-scalable=no"
     meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"
@@ -79,6 +80,6 @@ html
               a.btn.btn-block href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
                 = t '.sign_in'
       .snap-drawer-right
-        iframe#Box frameborder="0" style="position: absolute; height: 100%; width: 100%" scrolling="0"
+        iframe#Box frameborder="2" style="position: absolute; height: 100%; width: 100%" scrolling="0"
     #content.snap-content
       = yield
