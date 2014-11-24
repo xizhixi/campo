@@ -28,7 +28,7 @@ $(document).on 'page:change', ->
 $(document).on 'page:restore', ->
   NProgress.remove()
 
-$(document).on 'page:change', ->
+$(document).on 'page:restore', ->
   $("#left").mmenu({
     offCanvas: {
       position: "left",
