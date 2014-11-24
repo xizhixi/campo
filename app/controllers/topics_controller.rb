@@ -73,7 +73,6 @@ class TopicsController < ApplicationController
 
   def update
     @topic.update_attributes topic_params
-      redirect_to root_path
   end
 
   def trash
