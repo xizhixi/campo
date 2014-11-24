@@ -9,16 +9,16 @@ ul.nav.nav-pills
     /.pull-right
       /i.fa.fa-chevron-right
   li class=('active' if controller_name == 'accounts')
-    a href=settings_account_path
+    a href=settings_account_path data-no-turbolink=""
       = t '.account'
   /li class=('active' if controller_name == 'about')
     a href=settings_about_path
       = t '.about'
   li class=('active' if controller_name == 'profiles')
-    a href=settings_profile_path
+    a href=settings_profile_path data-no-turbolink=""
       = t '.profile'
   li class=('active' if controller_name == 'passwords')
-    a href=settings_password_path
+    a href=settings_password_path data-no-turbolink=""
       /i.fa.fa-chevron-right
       = t '.password'
   /a.list-group-item class=('active' if controller_name == 'notifications') href=settings_notifications_path

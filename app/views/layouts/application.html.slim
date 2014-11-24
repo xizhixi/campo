@@ -22,64 +22,59 @@ html
           id: #{current_user.id}
         };
 
-
-
   body
-    .snap-drawers style="background-color: #F3F3F3;"
-      .snap-drawer-left
-        .navbar height="100%"
-          - if login?
-            .panel
-            .panel
-              a href=settings_profile_path
-                img.img-rounded src=current_user.avatar.normal.url style='margin-left: 10%'
-                .btn style='margin-bottom: 10%'
-                  = current_user.name
-              a.btn.btn-lg.notifications-bell.pull-right href=notifications_path data-intro=("This is a tooltip!") data-step="1"
-                i.fa.fa-bell-o
-                  - if unread_notifications_count > 0
-                    .badge = unread_notifications_count > 99 ? '99+' : unread_notifications_count
-              a.btn.btn-block style='margin-left: 10%' href=root_path
-                .text-left
-                  = t '.LoveAnd'
-              /a.btn.btn-primary href=url_for(tab: 'hot')
-                = t '.hot'
-              /a.btn.btn-primary href=url_for(tab: 'newest')
-                = t '.newest'
-            .panel
-              a.btn.btn-block style='margin-left: 10%' href=user_topics_path(username: current_user.username)
-                .text-left
-                  = t '.post'
-                  .badge = posted_count(current_user)> 99 ? '99+' : posted_count(current_user)
-              '
-              a.btn.btn-block style='margin-left: 10%' href=likes_user_topics_path(username: current_user.username)
-                .text-left
-                  = t '.taken'
-                  .badge = accepted_count(current_user)> 99 ? '99+' : accepted_count(current_user)
-              '
-              a.btn.btn-block style='margin-left: 10%' href=done_user_topics_path(username: current_user.username)
-                .text-left
-                  = t '.done'
-                  .badge = done_count(current_user)> 99 ? '99+' : done_count(current_user)
-            .panel
-              a.btn.btn-block style='margin-left: 10%' href=settings_account_path
-                .text-left
-                  = t '.settings'
-            a.btn.btn-success style='width: 80%; margin-left: 10%' href=new_topic_path(category_id: @category.try(:slug))
-              = t '.create_topic'
-            /.btn.btn-large.btn-success onclick="javascript:introJs().setOption('showProgress', true).start();"
-              = t '.Tutorial'
-          - else
-            .panel
-              .btn.btn-block
-                img src="touch-icon-ipad.png"
-            .panel
-              a.btn.btn-block href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath))
-                = t '.sign_up'
-            .panel
-              a.btn.btn-block href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
-                = t '.sign_in'
-      .snap-drawer-right
-        iframe#Box frameborder="2" style="position: absolute; height: 100%; width: 100%" scrolling="0"
-    #content.snap-content
+    nav#left
+      .navbar height="100%"
+        - if login?
+          .panel
+          .panel
+            a href=settings_profile_path data-no-turbolink=""
+              img.img-rounded src=current_user.avatar.normal.url style='margin-left: 10%'
+              .btn style='margin-bottom: 10%'
+                = current_user.name
+            a.btn.btn-lg.notifications-bell.pull-right href=notifications_path data-no-turbolink=""
+              i.fa.fa-bell-o
+                - if unread_notifications_count > 0
+                  .badge = unread_notifications_count > 99 ? '99+' : unread_notifications_count
+            a.btn.btn-block style='margin-left: 10%' href=root_path data-no-turbolink=""
+              .text-left
+                = t '.LoveAnd'
+          /a.btn.btn-primary href=url_for(tab: 'hot')
+                        = t '.hot'
+          /a.btn.btn-primary href=url_for(tab: 'newest')
+                        = t '.newest'
+          .panel
+            a.btn.btn-block style='margin-left: 10%' href=user_topics_path(username: current_user.username) data-no-turbolink=""
+              .text-left
+                = t '.post'
+                .badge = posted_count(current_user)> 99 ? '99+' : posted_count(current_user)
+            '
+            a.btn.btn-block style='margin-left: 10%' href=likes_user_topics_path(username: current_user.username) data-no-turbolink=""
+              .text-left
+                = t '.taken'
+                .badge = accepted_count(current_user)> 99 ? '99+' : accepted_count(current_user)
+            '
+            a.btn.btn-block style='margin-left: 10%' href=done_user_topics_path(username: current_user.username) data-no-turbolink=""
+              .text-left
+                = t '.done'
+                .badge = done_count(current_user)> 99 ? '99+' : done_count(current_user)
+          .panel
+            a.btn.btn-block style='margin-left: 10%' href=settings_account_path data-no-turbolink=""
+              .text-left
+                = t '.settings'
+          a.btn.btn-success style='width: 80%; margin-left: 10%' href=new_topic_path(category_id: @category.try(:slug)) data-no-turbolink=""
+            = t '.create_topic'
+        - else
+          .panel
+            .btn.btn-block
+              img src="touch-icon-ipad.png"
+          .panel
+            a.btn.btn-block href=signup_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+              = t '.sign_up'
+          .panel
+            a.btn.btn-block href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
+              = t '.sign_in'
+    nav#right
+      iframe#Box frameborder="2" style="position: absolute; height: 100%; width: 100%" scrolling="0"
+    #content.content
       = yield

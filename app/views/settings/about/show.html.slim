@@ -21,8 +21,8 @@
 
 
 javascript:
-  var snapper = new Snap({
-    element: document.getElementById('content'),
-    disable: 'right',
-    hyperextensible: false
+  var content = document.getElementById('content');
+  var mc = new Hammer(content);
+  mc.on('panright', function (ev) {
+    $("#left").trigger("open.mm");
   });

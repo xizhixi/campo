@@ -1,14 +1,14 @@
 - @page_title = t '.user_s_topics', name: @user.name
 
-.main
+.main.nopadding
   /a.btn href=root_path
     = t '.LoveAnd'
-  .container
-    .row
-      .col-md-3
+  .container.nopadding
+    .row.nopadding
+      .col-md-3.nopadding
         = render 'users/profile', user: @user
         = render 'users/sidebar'
-      .col-md-9
+      .col-md-9.nopadding
         #topics.panel
           /.panel-heading.clearfix
             .pull-right
@@ -32,15 +32,16 @@
             .panel-footer.clearfix
               .pull-right
                 = paginate @topics, theme: 'campo', params: { anchor: 'topics' }
-
+          img height="300em"
 javascript:
-  var snapper = new Snap({
-    element: document.getElementById('content')//,
-    //hyperextensible: false
+  var content = document.getElementById('content');
+  var mc = new Hammer(content);
+  mc.on('panright', function (ev) {
+    $("#left").trigger("open.mm");
   });
 
 javascript:
   function LoadComments(url) {
     $("#Box").attr("src", url);
-    snapper.expand('right');
+    $("#right").trigger("open.mm");
   };

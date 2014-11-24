@@ -32,14 +32,15 @@
                 = paginate @comments, theme: 'campo', params: { anchor: 'comments' }
 
   javascript:
-    var snapper = new Snap({
-      element: document.getElementById('content')//,
-      //hyperextensible: false
+    var content = document.getElementById('content');
+    var mc = new Hammer(content);
+    mc.on('panright', function (ev) {
+      $("#left").trigger("open.mm");
     });
 
   javascript:
     function LoadComments(url) {
       $("#Box").attr("src", url);
-      snapper.expand('right');
+      $("#right").trigger("open.mm");
     }
     ;

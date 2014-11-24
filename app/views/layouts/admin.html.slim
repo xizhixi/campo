@@ -14,34 +14,27 @@ html
         };
 
   body
-    nav.navbar.navbar-campo.navbar-static-top.navbar-inverse
-      br
-      .container
-        .navbar-header
-          a.navbar-brand href=admin_root_path
-            = t '.admin', name: CONFIG['title']
-        ul.nav.navbar-nav.navbar-right
-          li
-            a href=root_path
-              i.fa.fa-sign-out
-          /li.navbar-toggle
-            a.tiem type="button" data-toggle="collapse" data-target="#navbar"
-              i.fa.fa-bars
-        ul
-          li class=('active' if controller_name == 'users')
-            a href=admin_users_path
-              = t '.users'
-          li class=('active' if controller_name == 'categories')
-            a href=admin_categories_path
-              = t '.categories'
-          li class=('active' if controller_name == 'topics')
-            a href=admin_topics_path
-              = t '.topics'
-          li class=('active' if controller_name == 'comments')
-            a href=admin_comments_path
-              = t '.comments'
-          li class=('active' if controller_name == 'attachments')
-            a href=admin_attachments_path
-              = t '.attachments'
+    li
+      a href=admin_root_path
+        = t '.admin', name: CONFIG['title']
+    li
+      a href=root_path
+        i.fa.fa-sign-out
+    li class=('active' if controller_name == 'users')
+      a href=admin_users_path
+        = t '.users'
+    li class=('active' if controller_name == 'categories')
+      a href=admin_categories_path
+        = t '.categories'
+    li class=('active' if controller_name == 'topics')
+      a href=admin_topics_path
+        = t '.topics'
+    li class=('active' if controller_name == 'comments')
+      a href=admin_comments_path
+        = t '.comments'
+    li class=('active' if controller_name == 'attachments')
+      a href=admin_attachments_path
+        = t '.attachments'
+
 
     = yield
