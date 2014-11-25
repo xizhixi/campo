@@ -1,7 +1,7 @@
-.main
-  .container
-    .row
-      .col-md-8.col-md-push-2
+.main.nopadding
+  .container.nopadding
+    .row.nopadding
+      .col-md-8.col-md-push-2.nopadding
         /a.btn.btn-default href=clear_notifications_path data-remote="true" data-method="delete" data-confirm=t('.delete_all_confirm')
           = t '.delete_all'
         /a.btn.btn-default.pull-right href=settings_notifications_path
@@ -24,6 +24,7 @@
               = t '.delete_all'
             .pull-right
               = paginate @notifications, theme: 'campo'
+          img height="200em"
 
 javascript:
   $(document).on('page:change', function () {
