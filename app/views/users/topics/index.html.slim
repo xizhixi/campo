@@ -32,7 +32,7 @@
             .panel-footer.clearfix
               .pull-right
                 = paginate @topics, theme: 'campo', params: { anchor: 'topics' }
-          img height="300em"
+          img height="200em"
 
 javascript:
   var content = document.getElementById('content');
@@ -46,5 +46,5 @@ javascript:
     $("#right").trigger("open.mm");
     setTimeout(function () {
       $("#Box").attr("src", url);
-    }, 250);
+    }, 300);
   };
