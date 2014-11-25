@@ -15,6 +15,25 @@ javascript:
   });
 
 javascript:
+  $(document).on('page:change', function () {
+    $("#left").mmenu({
+      offCanvas: {
+        position: "left",
+        zposition: "next"
+      },
+      classes: "mm-white"
+    });
+    $("#right").mmenu({
+      offCanvas: {
+        position: "right",
+        zposition: "next"
+      },
+      classes: "mm-white"
+    });
+  });
+
+
+javascript:
   var content = document.getElementById('content');
   var mc = new Hammer(content);
   mc.on('panright', function (ev) {

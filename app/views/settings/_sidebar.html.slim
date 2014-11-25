@@ -25,3 +25,14 @@ ul.nav.nav-pills
     .pull-right
       i.fa.fa-chevron-right
     = t '.notifications'
+
+  javascript:
+    $(document).on('page:change', function () {
+      $("#left").mmenu({
+        offCanvas: {
+          position: "left",
+          zposition: "next"
+        },
+        classes: "mm-white"
+      });
+    });

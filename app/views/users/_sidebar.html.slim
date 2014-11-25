@@ -17,3 +17,20 @@ ul.nav.nav-pills
     /.pull-right
       i.fa.fa-chevron-right
 
+  javascript:
+    $(document).on('page:change', function () {
+      $("#left").mmenu({
+        offCanvas: {
+          position: "left",
+          zposition: "next"
+        },
+        classes: "mm-white"
+      });
+      $("#right").mmenu({
+        offCanvas: {
+          position: "right",
+          zposition: "next"
+        },
+        classes: "mm-white"
+      });
+    });
