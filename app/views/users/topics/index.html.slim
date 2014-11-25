@@ -44,5 +44,7 @@ javascript:
 javascript:
   function LoadComments(url) {
     $("#right").trigger("open.mm");
-    $("#Box").attr("src", url);
+    setTimeout(function () {
+      $("#Box").attr("src", url);
+    }, 250);
   };
