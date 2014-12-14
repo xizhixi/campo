@@ -8,5 +8,5 @@
         = topic.user.name
       .medium-text
         = topic.title
-        = - topic.comments.each do |c|
-          c.body
+        - topic.comments.each do |c|
+          = c.body
