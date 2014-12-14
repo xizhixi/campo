@@ -4,7 +4,6 @@ class TopicsController < ApplicationController
 
   def home
     @topics = Topic.all.includes(:comments).order(id: :desc).page(params[:page])
-
   end
 
   def index
