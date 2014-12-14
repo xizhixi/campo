@@ -8,5 +8,7 @@
         = topic.user.name
       .medium-text
         = topic.title
-        - topic.comments.each do |c|
+    - topic.comments.each do |c|
+      .ms-layer.tbox data-delay="250" data-effect="skewleft(15,250)" data-origin="bc" data-resize="false"
+        .small-text
           = c.body
