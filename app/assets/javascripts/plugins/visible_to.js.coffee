@@ -38,7 +38,7 @@ campo.VisibleTo =
         topic_creator_id = $('[data-creator-id]').first().data('creator-id')
         creator_id = $element.closest('[data-creator-id]').data('creator-id')
         info = $element.closest('.clearfix').prev().find('p').text()
-        if (!campo.currentUser?) or !((campo.currentUser.id == topic_creator_id) and (info == 'Your wish, my command.'))
+        if (!campo.currentUser?) or !((campo.currentUser.id == topic_creator_id) and (info == '求勾搭, 求互粉'))
           return $element.remove()
 
       if 'done' in rules

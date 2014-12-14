@@ -16,6 +16,7 @@ class FileUploader < CarrierWave::Uploader::Base
   end
 
   process :exif_rotation
+  process resize_to_fill: [1080, 1920]
 
   def extension_white_list
     %w(jpg jpeg gif png)

@@ -16,7 +16,7 @@ zh-CN:
         created_at: "创建于"
         user: "用户"
       user:
-        avatar: "上传一张你最喜欢的大图作为头像吧~首页看到的就是各位小伙伴的全屏大头像哦。"
+        avatar: "上传一张最能代表你的照片作为头像吧~"
         bio: "简介"
         created_at: "创建于"
         email: Email
@@ -108,7 +108,7 @@ zh-CN:
   comments:
     comment:
       delete_confirm: "你确定要删除此评论吗？"
-      selected: "任务完成"
+      selected: "楼主喜欢我~"
       select: "萌萌哒，就是你~"
     form:
       cancel: "取消"
@@ -139,11 +139,11 @@ zh-CN:
       sign_in: "登录"
       sign_up: "注册"
       topics: "话题"
-      post: "我发起的任务"
-      taken: "我接受的任务"
-      done: "我完成的任务"
+      post: "我的请求"
+      taken: "我接受的请求"
+      done: "我完成的请求"
       settings: "设置"
-      create_topic: "发布我的任务"
+      create_topic: "发布我的请求"
       about: "关于"
   locales:
     en: "英文"
@@ -229,7 +229,7 @@ zh-CN:
         profile: "个人资料"
         profile_settings: "个人资料设置"
         save_changes: "保存修改"
-        avatar: "上传一张你最喜欢的大图作为头像吧~首页看到的就是各位小伙伴的全屏大头像哦。"
+        avatar: "上传一张最能代表你的照片作为头像吧~"
     sidebar:
       account: "关于爱与"
       notifications: "通知"
@@ -256,16 +256,16 @@ zh-CN:
       edit_topic: "编辑话题"
     form:
       cancel: "取消"
-      create_topic: "发布我的任务"
+      create_topic: "发布我的请求"
       no_category: "不分类"
       save_changes: "保存修改"
-      title: "任务描述"
-      description1: "随性的任务可以描述得很简单，具体的任务则应该描述得很精确。"
-      description2: "稍微透露下你的美图的信息也可以哦。到最后一页确认美图之后，就可以成功发布了~"
-      preview: "美图预览"
-      attach_images_by1: "以你的美图作为给完成任务的小伙伴的奖励实在是再适合不过啦。"
-      attach_images_by2: "点击上传一张吧，没完成任务的小伙伴是看不见的哦。"
-      attach_images_by3: "传的图片较大的话，上传会需要花点时间，请耐心等待~"
+      title: "请求描述"
+      description1: "现在，描述下你的请求吧，求吐槽求建议求线下互助都可以的哦。"
+      description2: "到最后一页确认美图之后，就可以成功发布了~"
+      preview: "妆照预览"
+      attach_images_by1: "来发一张你的妆照吧，点击上传~一张就够了哦亲，传好直接下一步"
+      attach_images_by2: "照片较大的话，上传会需要花点时间，请耐心等待"
+      attach_images_by3: ""
       next: "下一步"
       prev: "上一步"
     index:
@@ -293,8 +293,8 @@ zh-CN:
       sign_up: "注册"
       to_comment: "后发表评论"
       your_account_had_been_locked: "你的帐号已被锁定"
-      accept: "点击接受"
-      people: "个小伙伴已经接受了这个任务"
+      accept: "勾搭一下"
+      people: "个小伙伴已经接受了楼主的请求"
     topic:
       comments_count: "%{count} 条评论"
   user_mailer:

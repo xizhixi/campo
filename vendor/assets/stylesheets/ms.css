@@ -20,7 +20,7 @@
 
 .master-slider.before-init{}
 
-.master-slider img {max-width:none;}
+.master-slider img {max-width:100%;}
 
 .ms-ie img{border:none;}
 .ms-ie8 * {opacity:inherit;filter:inherit;}
