@@ -52,8 +52,7 @@
         .text
           = t '.description2'
       li
-        .btn.btn-disable
-          = t '.preview'
+        = t '.preview'
         - if topic.new_record?
           = f.submit t('.create_topic'), class: 'btn btn-success pull-right', tabIndex: 4, 'data-disable-with' => t('.create_topic')
         - else
