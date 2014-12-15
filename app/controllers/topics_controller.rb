@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
   before_action :find_topic, only: [:edit, :update, :trash]
 
   def home
-    @topics = Topic.all.includes(:comments).order(id: :desc).page(params[:page])
+    @topics = Topic.all.order(id: :desc).page(params[:page])
   end
 
   def index
