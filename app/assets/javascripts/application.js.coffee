@@ -27,3 +27,16 @@ $(document).on 'page:change', ->
   NProgress.done()
 $(document).on 'page:restore', ->
   NProgress.remove()
+
+#stanislav.it/how-to-prevent-ios-standalone-mode-web-apps-from-opening-links-in-safari
+if ("standalone" of window.navigator) and window.navigator.standalone
+  noddy = undefined
+  remotes = false
+  document.addEventListener "click", ((event) ->
+    noddy = event.target
+    noddy = noddy.parentNode  while noddy.nodeName isnt "A" and noddy.nodeName isnt "HTML"
+    if "href" of noddy and noddy.href.indexOf("http") isnt -1 and (noddy.href.indexOf(document.location.host) isnt -1 or remotes)
+      event.preventDefault()
+      document.location.href = noddy.href
+    return
+  ), false
