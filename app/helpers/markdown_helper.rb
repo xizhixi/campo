@@ -22,7 +22,7 @@ module MarkdownHelper
       # link mention
       # @username => <a href="/~username">@username</a>
       text.gsub!(/@([a-z0-9][a-z0-9-]*)/i) { |match|
-        %Q|<a href="/~#{$1}" target="_parent">#{match}</a>|
+        %Q|<a href="/~#{$1}">#{match}</a>|
       }
 
       # link comments
