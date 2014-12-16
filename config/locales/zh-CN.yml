@@ -295,6 +295,7 @@ zh-CN:
       your_account_had_been_locked: "你的帐号已被锁定"
       accept: "勾搭一下"
       people: "个小伙伴接受了楼主的请求"
+      back: "返回"
     topic:
       comments_count: "%{count} 条评论"
   user_mailer:
