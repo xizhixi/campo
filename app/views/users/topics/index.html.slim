@@ -40,11 +40,3 @@ javascript:
   mc.on('panright', function (ev) {
     $("#left").trigger("open.mm");
   });
-
-javascript:
-  function LoadComments(url) {
-    $("#right").trigger("open.mm");
-    setTimeout(function () {
-      $("#Box").attr("src", url);
-    }, 300);
-  };

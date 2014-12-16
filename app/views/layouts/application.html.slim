@@ -22,7 +22,7 @@ html
           id: #{current_user.id}
         };
 
-  body
+  body.m-scene
     nav#left
       .navbar height="100%"
         - if login?
@@ -74,8 +74,5 @@ html
           .panel
             a.btn.btn-block href=login_path(return_to: params[:return_to] || return_to_path(request.fullpath))
               = t '.sign_in'
-    nav#right
-      div style="overflow:auto;-webkit-overflow-scrolling:touch;padding:0"
-        iframe#Box frameborder="0" style="position: absolute; height: 100%; width: 100%; overflow:hidden"
     #content.content
       = yield

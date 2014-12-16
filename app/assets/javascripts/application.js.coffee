@@ -13,7 +13,7 @@
 #= require jquery.mmenu.min
 #= require jquery.fluidbox.min
 #= require ms
-
+#= require jquery.smoothState
 
 
 $(document).on 'page:update', ->

@@ -1,9 +1,10 @@
 - cache [topic, locale] do
-  .ms-slide onclick="LoadComments('#{topic_path(topic)}')"
+  /.ms-slide onclick="LoadComments('#{topic_path(topic)}')"
     /img src="blank.gif" data-src=topic.user.avatar.original.url
+  .ms-slide
     img src="blank.gif"
       = markdown_format topic.body
-    .ms-layer.tbox data-delay="250" data-effect="skewleft(15,250)" data-origin="bc" data-resize="false"
+    a.ms-layer.tbox href=topic_path(topic) data-delay="250" data-effect="skewleft(15,250)" data-origin="bc" data-resize="false"
       .small-text
         = time_ago_tag topic.created_at
         = "    "
@@ -12,5 +13,5 @@
         = topic.title
     - topic.comments.each do |c|
       .ms-layer data-delay=rand(1000..7000) data-effect="fade" data-hide-effect="fade" data-hide-time=rand(7000..12000) data-origin="tl" data-offset-x=rand(200) data-offset-y=rand(400)
-        .medium-text
+        .small-text
           = c.body

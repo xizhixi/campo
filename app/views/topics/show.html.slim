@@ -1,115 +1,117 @@
 - @page_title = @topic.title
 
-.main.nopadding
-  .container.nopadding
-    .row.nopadding
-      .col-md-9.nopadding
-        .panel
-          .panel-body
-            - cache [@topic, locale] do
-              .list-group.list-group-campo
-                .list-group-item.comment data-creator-id=@topic.user_id
-                  a.list-group-item-avatar href=user_link(@topic.user) target="_parent" data-no-turbolink=""
-                    p
-                      img.img-rounded alt="avatar" src=@topic.user.avatar.normal.url
-                  .list-group-item-content
-                    .list-group-item-heading
-                      a.comment-user href=user_link(@topic.user) target="_parent" data-no-turbolink=""
-                        b = @topic.user.name
-                        '
-                        /= "@#{@topic.user.username}"
-                      = ' · '
-                      /a href=topic_path(@topic)
-                      = time_ago_tag @topic.created_at
-                      /- if @topic.category
-                        /= ' · '
-                        /a href=categoried_topics_path(category_id: @topic.category.slug)
-                        = @topic.category.name
-                    br
-                    h4 = @topic.title
-                    /article.comment-body data-visible-to="done"
-                      = markdown_format @topic.body
-                    br
-                    .list-group-item-actions.clearfix
-                      a.btn.btn-default id="like-for-topic-#{@topic.id}" href=topic_like_path(@topic) data-remote="true" data-method="post"
-                        = t '.accept'
-                        i.fa.fa-heart
-                        '
-                        span.count
-                          - if @topic.likes_count > 0
-                            = @topic.likes_count
-                      a.btn.pull-right data-visible-to="creator" href=edit_topic_path(@topic) target="_parent"
-                        i.fa.fa-pencil
-                      /a.btn data-visible-to="creator" href=trash_topic_path(@topic) data-remote="true" data-method="delete" data-confirm=t('.delete_confirm')
-                        i.fa.fa-trash-o
-                      br
-                      br
-                      - if @topic.likes_count > 0
-                        = @topic.likes_count
-                        '
-                        = t '.people'
-                      br
-                      .text style='color: #D9534F'
-                        - if @topic.category
-                          = @topic.category.name
-
-        .panel#comments
-          .panel-body
-            ul.list-group.list-group-campo id="comments-for-topic-#{@topic.id}"
-              - if @comments.any?
-                = render @comments
-              - else
-                li.list-group-item.text-center.text-muted.empty-message
-                  = t '.no_comment_yet'
-
-        .panel
-          .panel-body
-            - if login?
-              - unless current_user.locked?
+.scene_element.scene_element--fadeinright
+  .main.nopadding
+    .container.nopadding
+      .row.nopadding
+        .col-md-9.nopadding
+          .panel
+            .panel-body
+              - cache [@topic, locale] do
                 .list-group.list-group-campo
-                  .list-group-item.comment
-                    /a.list-group-item-avatar href=user_link(current_user) target="_parent"
-                    .list-group-item-avatar
-                      img.img-rounded alt="avatar" src=current_user.avatar.normal.url
+                  .list-group-item.comment data-creator-id=@topic.user_id
+                    a.list-group-item-avatar href=user_link(@topic.user) target="_parent" data-no-turbolink=""
+                      p
+                        img.img-rounded alt="avatar" src=@topic.user.avatar.normal.url
                     .list-group-item-content
                       .list-group-item-heading
-                        /a.comment-user href=user_link(current_user) target="_parent"
-                        .comment-user
-                          b = current_user.name
+                        a.comment-user href=user_link(@topic.user) target="_parent" data-no-turbolink=""
+                          b = @topic.user.name
                           '
-                          /= "@#{current_user.username}"
-                      = form_for @topic.comments.new, url: topic_comments_path(@topic), remote: true do |f|
-                        .form-group
-                          = markdown_brief f, :body
-                        = f.submit t('.add_this_comment'), class: 'btn btn-success', 'data-disable-with' => t('.add_this_comment')
-              - else
-                = t '.your_account_had_been_locked'
-            - else
-              a href=signup_path(return_to: request.fullpath) target="_parent"
-                = t '.sign_up'
-              '
-              = t '.or'
-              '
-              a href=login_path(return_to: request.fullpath) target="_parent"
-                = t '.login'
-              '
-              = t '.to_comment'
+                        /= "@#{@topic.user.username}"
+                        = ' · '
+                        /a href=topic_path(@topic)
+                        = time_ago_tag @topic.created_at
+                      /- if @topic.category
+                            /= ' · '
+                            /a href=categoried_topics_path(category_id: @topic.category.slug)
+                            = @topic.category.name
+                      br
+                      h4 = @topic.title
+                      /article.comment-body data-visible-to="done"
+                      article.comment-body
+                        = markdown_format @topic.body
+                      br
+                      .list-group-item-actions.clearfix
+                        a.btn.btn-default id="like-for-topic-#{@topic.id}" href=topic_like_path(@topic) data-remote="true" data-method="post"
+                          = t '.accept'
+                          i.fa.fa-heart
+                          '
+                          span.count
+                            - if @topic.likes_count > 0
+                              = @topic.likes_count
+                        a.btn.pull-right data-visible-to="creator" href=edit_topic_path(@topic) target="_parent"
+                          i.fa.fa-pencil
+                        /a.btn data-visible-to="creator" href=trash_topic_path(@topic) data-remote="true" data-method="delete" data-confirm=t('.delete_confirm')
+                            i.fa.fa-trash-o
+                        br
+                        br
+                        - if @topic.likes_count > 0
+                          = @topic.likes_count
+                          '
+                          = t '.people'
+                        br
+                        .text style='color: #D9534F'
+                          - if @topic.category
+                            = @topic.category.name
 
-        .panel
-          .panel-body
-            h4.panel-title
-              = t '.related_topics'
-            br
-            - cache [@topic, 'related_topics', locale] do
-              .list-group.list-group-campo
-                - more_like_this_topics = @topic.more_like_this
-                - if more_like_this_topics.any?
-                  - more_like_this_topics.each do |topic|
-                    a.list-group-item href=topic_path(topic)
-                      = topic.title
+          .panel#comments
+            .panel-body
+              ul.list-group.list-group-campo id="comments-for-topic-#{@topic.id}"
+                - if @comments.any?
+                  = render @comments
                 - else
-                  .list-group-item.text-center.text-muted
-                    = t '.no_more_topics'
+                  li.list-group-item.text-center.text-muted.empty-message
+                    = t '.no_comment_yet'
+
+          .panel
+            .panel-body
+              - if login?
+                - unless current_user.locked?
+                  .list-group.list-group-campo
+                    .list-group-item.comment
+                      /a.list-group-item-avatar href=user_link(current_user) target="_parent"
+                      .list-group-item-avatar
+                        img.img-rounded alt="avatar" src=current_user.avatar.normal.url
+                      .list-group-item-content
+                        .list-group-item-heading
+                          /a.comment-user href=user_link(current_user) target="_parent"
+                          .comment-user
+                            b = current_user.name
+                            '
+                        /= "@#{current_user.username}"
+                        = form_for @topic.comments.new, url: topic_comments_path(@topic), remote: true do |f|
+                          .form-group
+                            = markdown_brief f, :body
+                          = f.submit t('.add_this_comment'), class: 'btn btn-success', 'data-disable-with' => t('.add_this_comment')
+                - else
+                  = t '.your_account_had_been_locked'
+              - else
+                a href=signup_path(return_to: request.fullpath) target="_parent"
+                  = t '.sign_up'
+                '
+                = t '.or'
+                '
+                a href=login_path(return_to: request.fullpath) target="_parent"
+                  = t '.login'
+                '
+                = t '.to_comment'
+
+          .panel
+            .panel-body
+              h4.panel-title
+                = t '.related_topics'
+              br
+              - cache [@topic, 'related_topics', locale] do
+                .list-group.list-group-campo
+                  - more_like_this_topics = @topic.more_like_this
+                  - if more_like_this_topics.any?
+                    - more_like_this_topics.each do |topic|
+                      a.list-group-item href=topic_path(topic)
+                        = topic.title
+                  - else
+                    .list-group-item.text-center.text-muted
+                      = t '.no_more_topics'
 
 - if login?
   - if @topic.liked_by?(current_user)
@@ -135,4 +137,11 @@
   javascript:
     $(function () {
       $('a').fluidbox();
+    });
+
+  javascript:
+    var content = document.getElementById('content');
+    var mc = new Hammer(content);
+    mc.on('panright', function (ev) {
+      history.go(-1);
     });
