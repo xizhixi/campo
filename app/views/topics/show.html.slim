@@ -6,16 +6,18 @@
       .row.nopadding
         .col-md-9.nopadding
           .panel
-            .panel-body
+            .panel-body.nopadding
+              a.btn.btn-default href="javascript:history.go(-1);"
+                = t '.back'
               - cache [@topic, locale] do
                 .list-group.list-group-campo
                   .list-group-item.comment data-creator-id=@topic.user_id
-                    a.list-group-item-avatar href=user_link(@topic.user) target="_parent" data-no-turbolink=""
+                    a.list-group-item-avatar href=user_link(@topic.user) data-no-turbolink=""
                       p
                         img.img-rounded alt="avatar" src=@topic.user.avatar.normal.url
                     .list-group-item-content
                       .list-group-item-heading
-                        a.comment-user href=user_link(@topic.user) target="_parent" data-no-turbolink=""
+                        a.comment-user href=user_link(@topic.user) data-no-turbolink=""
                           b = @topic.user.name
                           '
                         /= "@#{@topic.user.username}"
@@ -40,7 +42,7 @@
                           span.count
                             - if @topic.likes_count > 0
                               = @topic.likes_count
-                        a.btn.pull-right data-visible-to="creator" href=edit_topic_path(@topic) target="_parent"
+                        a.btn.pull-right data-visible-to="creator" href=edit_topic_path(@topic)
                           i.fa.fa-pencil
                         /a.btn data-visible-to="creator" href=trash_topic_path(@topic) data-remote="true" data-method="delete" data-confirm=t('.delete_confirm')
                             i.fa.fa-trash-o
@@ -56,7 +58,7 @@
                             = @topic.category.name
 
           .panel#comments
-            .panel-body
+            .panel-body.nopadding
               ul.list-group.list-group-campo id="comments-for-topic-#{@topic.id}"
                 - if @comments.any?
                   = render @comments
@@ -70,12 +72,12 @@
                 - unless current_user.locked?
                   .list-group.list-group-campo
                     .list-group-item.comment
-                      /a.list-group-item-avatar href=user_link(current_user) target="_parent"
+                      /a.list-group-item-avatar href=user_link(current_user)
                       .list-group-item-avatar
                         img.img-rounded alt="avatar" src=current_user.avatar.normal.url
                       .list-group-item-content
                         .list-group-item-heading
-                          /a.comment-user href=user_link(current_user) target="_parent"
+                          /a.comment-user href=user_link(current_user)
                           .comment-user
                             b = current_user.name
                             '
@@ -87,17 +89,17 @@
                 - else
                   = t '.your_account_had_been_locked'
               - else
-                a href=signup_path(return_to: request.fullpath) target="_parent"
+                a href=signup_path(return_to: request.fullpath)
                   = t '.sign_up'
                 '
                 = t '.or'
                 '
-                a href=login_path(return_to: request.fullpath) target="_parent"
+                a href=login_path(return_to: request.fullpath)
                   = t '.login'
                 '
                 = t '.to_comment'
 
-          .panel
+          .panel style="margin-bottom:0"
             .panel-body
               h4.panel-title
                 = t '.related_topics'
@@ -112,6 +114,10 @@
                   - else
                     .list-group-item.text-center.text-muted
                       = t '.no_more_topics'
+            br
+            a.btn.btn-default href="javascript:history.go(-1);"
+              = t '.back'
+
 
 - if login?
   - if @topic.liked_by?(current_user)
