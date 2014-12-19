@@ -9,7 +9,6 @@
 #= require love
 #= require_tree ./plugins
 #= require jquery.bxslider.min
-#= require hammer.min
 #= require meny
 #= require jquery.fluidbox.min
 #= require ms
