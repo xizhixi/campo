@@ -35,14 +35,6 @@
             a.btn.btn-warning href=logout_path data-method="delete"
               = t '.logout'
 
-
-javascript:
-  var content = document.getElementById('content');
-  var mc = new Hammer(content);
-  mc.on('panright', function (ev) {
-    $("#left").trigger("open.mm");
-  });
-
 javascript:
   $('form.user-form').validate({
     rules: {

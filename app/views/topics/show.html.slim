@@ -12,12 +12,12 @@
               - cache [@topic, locale] do
                 .list-group.list-group-campo
                   .list-group-item.comment data-creator-id=@topic.user_id
-                    a.list-group-item-avatar href=user_link(@topic.user) data-no-turbolink=""
+                    a.list-group-item-avatar href=user_link(@topic.user)
                       p
                         img.img-rounded alt="avatar" src=@topic.user.avatar.normal.url
                     .list-group-item-content
                       .list-group-item-heading
-                        a.comment-user href=user_link(@topic.user) data-no-turbolink=""
+                        a.comment-user href=user_link(@topic.user)
                           b = @topic.user.name
                           '
                         /= "@#{@topic.user.username}"
@@ -143,11 +143,4 @@
   javascript:
     $(function () {
       $('a').fluidbox();
-    });
-
-  javascript:
-    var content = document.getElementById('content');
-    var mc = new Hammer(content);
-    mc.on('panright', function (ev) {
-      history.go(-1);
     });

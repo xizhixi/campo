@@ -34,13 +34,6 @@
           = render 'share/user_confirm_required'
 
 javascript:
-  var content = document.getElementById('content');
-  var mc = new Hammer(content);
-  mc.on('panright', function (ev) {
-    $("#left").trigger("open.mm");
-  });
-
-javascript:
   $('form.password-form').validate({
     rules: {
       'current_password': 'required',

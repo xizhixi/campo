@@ -10,7 +10,7 @@
 #= require_tree ./plugins
 #= require jquery.bxslider.min
 #= require hammer.min
-#= require jquery.mmenu.min
+#= require meny
 #= require jquery.fluidbox.min
 #= require ms
 #= require jquery.smoothState
@@ -27,3 +27,16 @@ $(document).on 'page:change', ->
   NProgress.done()
 $(document).on 'page:restore', ->
   NProgress.remove()
+
+$(document).on 'page:change', ->
+  Meny.create({
+    menuElement: document.querySelector('.meny'),
+    contentsElement: document.querySelector('.contents'),
+    position: Meny.getQuery().p || 'left',
+    height: 200,
+    width: 260,
+    threshold: 40,
+    overlap: 0,
+    mouse: true,
+    touch: true
+  });
