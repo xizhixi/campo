@@ -7,19 +7,28 @@
     .row.nopadding
       .col-md-3.nopadding
         = render 'users/profile', user: @user
-        = render 'users/sidebar'
+        /= render 'users/sidebar'
       .col-md-9.nopadding
         #topics.panel
-          /.panel-heading.clearfix
+          .panel-heading.clearfix
             .pull-right
               ul.nav.nav-pills
-                li class=('active' if action_name == 'index')
+                li class=('active' if controller_name == 'topics' and action_name == 'index')
                   a href=user_topics_path
-                    = t '.publish'
-                li class=('active' if action_name == 'likes')
+                    = t '.publishtopic'
+                li class=('active' if controller_name == 'comments' and action_name == 'index')
+                  a href=user_comments_path
+                    = t '.publishcomment'
+                li class=('active' if controller_name == 'topics' and action_name == 'likes')
+                  a href=likes_user_topics_path
+                    = t '.likestopic'
+                li class=('active' if controller_name == 'comments' and action_name == 'likes')
+                  a href=likes_user_comments_path
+                    = t '.likescomment'
+                /li class=('active' if action_name == 'likes')
                   a href=likes_user_topics_path
                     = t '.likes'
-            h3.panel-title
+            /h3.panel-title
               = t '.topics'
           .panel-body
             .list-group.list-group-campo
@@ -27,9 +36,8 @@
                 = render partial: 'topics/topic', collection: @topics
               - else
                 .list-group-item.text-center.text-muted.empty-message
-                  = t '.no_topic_yet'
+                  = t '.no_content_yet'
           - if @topics.total_pages > 1
             .panel-footer.clearfix
               .pull-right
                 = paginate @topics, theme: 'campo', params: { anchor: 'topics' }
-          img height="200em"

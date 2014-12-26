@@ -409,3 +409,10 @@ article {
   margin-left: -15px;
   margin-right: 0px;
 }
+
+.float {
+  position:absolute;
+  right:0px;
+  top:0px;
+  z-index:200;
+}

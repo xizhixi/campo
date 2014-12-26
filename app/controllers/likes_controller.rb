@@ -7,31 +7,10 @@ class LikesController < ApplicationController
       return
     end
     @likeable.likes.find_or_create_by user: current_user
-    resource, id = request.path.split('/')[1, 2]
-    @commentable = resource.singularize.classify.constantize.find(id)
-    case @commentable
-    when Topic
-      @comment = @commentable.comments.create(body: '求勾搭, 求互粉', user: current_user)
-      if @comment
-        Resque.enqueue(CommentNotificationJob, @comment.id)
-      end
-    when Comment
-      @commentable.commentable.update(category_id: 1)
-    end
   end
 
   def destroy
-    resource, id = request.path.split('/')[1, 2]
-    @commentable = resource.singularize.classify.constantize.find(id)
-    case @commentable
-    when Topic
-      @likeable.likes.where(user: current_user).destroy_all
-      @commentable.comments.each do |c|
-        c.destroy if c.user == current_user and c.body == '求勾搭, 求互粉'
-      end
-    when Comment
-      render :forbidden
-    end
+    @likeable.likes.where(user: current_user).destroy_all
   end
 
   private

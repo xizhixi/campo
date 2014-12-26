@@ -3,6 +3,15 @@
   /- if @topics.total_pages > 1
       = paginate @topics, theme: 'campo'
 
+.float
+  ul.nav.nav-pills
+    li class=('active' if params[:tab] == 'hot')
+      a href=url_for(tab: 'hot')
+        = t '.hot'
+    li class=('active' if params[:tab] == 'newest')
+      a href=url_for(tab: 'newest')
+        = t '.newest'
+
 javascript:
   $('#slider').masterslider({
     speed: 50,

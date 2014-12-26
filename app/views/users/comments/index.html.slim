@@ -1,23 +1,32 @@
 - @page_title = t '.user_s_comments', name: @user.name
 
-.main
-  .container
-    .row
-      .col-md-3
+.main.nopadding
+  .container.nopadding
+    .row.nopadding
+      .col-md-3.nopadding
         = render 'users/profile', user: @user
-        = render 'users/sidebar'
-      .col-md-9
+        /= render 'users/sidebar'
+      .col-md-9.nopadding
         #comments.panel
-          /.panel-heading.clearfix
+          .panel-heading.clearfix
             .pull-right
               ul.nav.nav-pills
-                li class=('active' if action_name == 'index')
+                /li class=('active' if action_name == 'index')
                   a href=user_comments_path
                     = t '.publish'
-                li class=('active' if action_name == 'likes')
+                li class=('active' if controller_name == 'topics' and action_name == 'index')
+                  a href=user_topics_path
+                    = t '.publishtopic'
+                li class=('active' if controller_name == 'comments' and action_name == 'index')
+                  a href=user_comments_path
+                    = t '.publishcomment'
+                li class=('active' if controller_name == 'topics' and action_name == 'likes')
+                  a href=likes_user_topics_path
+                    = t '.likestopic'
+                li class=('active' if controller_name == 'comments' and action_name == 'likes')
                   a href=likes_user_comments_path
-                    = t '.likes'
-            h3.panel-title
+                    = t '.likescomment'
+            /h3.panel-title
               = t '.comments'
           .panel-body
             .list-group.list-group-campo
@@ -25,7 +34,7 @@
                 = render @comments
               - else
                 .list-group-item.text-center.text-muted.empty-message
-                  = t '.no_comment_yet'
+                  = t '.no_content_yet'
           - if @comments.total_pages > 1
             .panel-footer.clearfix
               .pull-right

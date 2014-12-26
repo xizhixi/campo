@@ -20,14 +20,16 @@
             i.fa.fa-reply
           a.btn data-reply-to="@#{comment.user.username} "
             i.fa.fa-reply
-          a.btn data-visible-to="topic-creator" id="like-for-comment-#{comment.id}" href=comment_like_path(comment) data-remote="true" data-method="post"
-            - if comment.likes_count < 1
+          /a.btn data-visible-to="topic-creator" id="like-for-comment-#{comment.id}" href=comment_like_path(comment) data-remote="true" data-method="post"
+          a.btn id="like-for-comment-#{comment.id}" href=comment_like_path(comment) data-remote="true" data-method="post"
+            /- if comment.likes_count < 1
               = t '.select'
-            '
+            /'
             i.fa.fa-heart
-          span.count.text style='color: #D9534F'
-            - if comment.likes_count > 0
-              = t '.selected'
+            '
+            span.count.text style='color: #D9534F'
+              - if comment.likes_count > 0
+                = comment.likes_count
 
           /a.btn href=edit_comment_path(comment) data-remote="true" data-visible-to="creator" target="_parent"
             i.fa.fa-pencil
