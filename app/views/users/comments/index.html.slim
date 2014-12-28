@@ -28,7 +28,7 @@
                     = t '.likescomment'
             /h3.panel-title
               = t '.comments'
-          .panel-body
+          .panel-body.nopadding
             .list-group.list-group-campo
               - if @comments.any?
                 = render @comments

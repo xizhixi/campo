@@ -4,7 +4,7 @@
       img.img-rounded alt="avatar" src=comment.user.avatar.normal.url
     .list-group-item-content
       .list-group-item-heading
-        b = comment_title(comment)
+        b = truncate comment_title(comment), length: 20
         span.text-muted
           = ' · '
           = time_ago_tag comment.created_at

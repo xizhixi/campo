@@ -413,6 +413,10 @@ article {
 .float {
   position:absolute;
   right:0px;
-  top:0px;
+  top:1em;
   z-index:200;
+}
+
+.textb {
+  background: rgba(0, 0, 0, 0.5);
 }

@@ -4,7 +4,7 @@
       img.img-rounded alt="avatar" src=topic.user.avatar.normal.url
     .list-group-item-content
       .list-group-item-heading
-        b = topic.title
+        b = truncate topic.title, length: 140
       .text-muted
         = topic.user.name
         = ' · '

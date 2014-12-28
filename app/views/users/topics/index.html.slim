@@ -30,7 +30,7 @@
                     = t '.likes'
             /h3.panel-title
               = t '.topics'
-          .panel-body
+          .panel-body.nopadding
             .list-group.list-group-campo
               - if @topics.any?
                 = render partial: 'topics/topic', collection: @topics
