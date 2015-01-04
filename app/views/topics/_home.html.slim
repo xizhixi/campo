@@ -2,7 +2,8 @@
   /.ms-slide onclick="LoadComments('#{topic_path(topic)}')"
     /img src="blank.gif" data-src=topic.user.avatar.original.url
   .ms-slide
-    img src="blank.gif" data-src="#{body_parser(topic)[0]}"
+    img src="blank.gif"
+      = markdown_format topic.body
     a.ms-layer.tbox href=topic_path(topic) data-delay="250" data-effect="skewleft(15,250)" data-origin="bc" data-resize="false"
       .small-text
         = time_ago_tag topic.created_at

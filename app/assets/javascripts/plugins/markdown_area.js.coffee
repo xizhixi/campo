@@ -26,7 +26,7 @@ $(document).on 'change', '.markdown-area .file-upload input[type=file]', (event)
     formData = new FormData()
     formData.append 'attachment[file]', this
     fileName = this.name
-    imageTag = "![#{fileName}]()     "
+    imageTag = "![#{fileName}]()"
 
     pos = textarea[0].selectionStart
     before = textarea.val().slice(0, pos)
