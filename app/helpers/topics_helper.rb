@@ -3,6 +3,18 @@ module TopicsHelper
     topic_path(topic, page: (topic.total_pages if topic.total_pages > 1), anchor: (topic.comments_count if topic.comments_count > 0))
   end
 
+  def body_parser(topic)
+    file_reg = /\[!\[.+?\]\((\/uploads\/attachment\/file\/.+?)\)\]\(\)(.*)/m
+    urls = []
+    data = topic.body
+    while file_reg =~ data do
+      break unless $~[1]
+      urls.push($~[1])
+      data = $~[2]
+    end
+    urls
+  end
+
   def posted_count(user)
     if login?
       user.topics.count
