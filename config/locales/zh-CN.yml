@@ -349,9 +349,9 @@ zh-CN:
     new:
       choose_a_password: "选一个密码"
       create_account: "创建帐号"
-      pick_a_username: "挑一个用户名"
+      pick_a_username: "挑一个用户名，登陆用~"
       sign_up: "注册"
-      your_email: "你的邮箱地址"
+      your_email: "你的邮箱地址，用于确认和找回密码，登陆也可以"
       your_full_name: "你的昵称"
     passwords:
       edit:
